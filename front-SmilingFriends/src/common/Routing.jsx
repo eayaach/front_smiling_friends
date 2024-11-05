@@ -10,14 +10,10 @@ const MainContainer = styled.div`
   display: flex;
   height: 100vh; /* Ocupa toda la altura de la ventana */
   background-image: url(${fondoImg});
-`;
-
-// Estilo para el contenido principal
-const MainContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10%;
-  overflow-y: auto; /* Permite desplazamiento si el contenido es muy grande */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
 `;
 
 function Routing(){
@@ -25,12 +21,12 @@ function Routing(){
         <BrowserRouter>
           <MainContainer>
             <Sidebar />
-            <MainContent>
+
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
               </Routes>
-            </MainContent>
+
           </MainContainer>
           <img src={enanoImg} className="enano" alt="Enano" />
         </BrowserRouter>

@@ -85,13 +85,12 @@ button:focus-visible {
 }
 
 .enano {
-  position: fixed; /* Fija la imagen en la ventana del navegador */
-  top: 60%; /* Ajusta la posición desde la parte superior */
-  right: 85%; /* Ajusta la posición desde la derecha */
-  width: 300px;
-  height: 300px; /* Ajusta el tamaño de la imagen */
-  z-index: 1000; /* Asegura que esté sobre otros elementos */
-  display: block; /* Asegura que la imagen se muestre como bloque */
-  visibility: visible; /* Asegura que sea visible */
-  opacity: 1; /* Asegura que no esté transparente */
+  position: absolute; /* Posiciona la imagen de forma absoluta dentro del contenedor */
+  bottom: 0; /* Posición pegada al borde inferior */
+  left: 0; /* Posición pegada a la izquierda */
+  width: 50vh; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  z-index: 1000; /* Z-index más alto que la sidebar */
 }
+
+/* Ajusta el tamaño de la imagen para pantallas más pequeñas */
