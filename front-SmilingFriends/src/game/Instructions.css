@@ -1,0 +1,28 @@
+p, ul {
+    line-height: 1.6;
+}
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+.section {
+    background-color: rgba(255,255,255, 0.90);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+.title {
+    background-color: rgba(255,255,255, 0.70);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
