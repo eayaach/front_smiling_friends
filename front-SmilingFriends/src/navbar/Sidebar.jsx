@@ -88,8 +88,8 @@ export default function Sidebar() {
                     <StyledParagraph>BOARD</StyledParagraph>
                 </NavElement>
                 <NavElement>
-                    <NavIcon to="#" ><GoIcons.GoInfo/></NavIcon>
-                    <StyledParagraph>RULES</StyledParagraph>
+                  <NavIcon to="/instructions"><GoIcons.GoInfo /></NavIcon>
+                  <StyledParagraph>RULES</StyledParagraph>
                 </NavElement>
             </SidebarWrap>
         </SidebarNav>
