@@ -14,16 +14,57 @@ const Nav = styled.div`
   align-items: center;
   position: relative;
   top: 0%;
-  z-index: 1000;
+
 `;
 
-const NavIcon = styled(Link)`
+const NavIcon = styled.div`
   font-size: 3rem;
   color: #fff;
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: inherit;
+`;
+
+const MenuIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 2rem;
+  z-index: 1000;
+
+
+
+  div {
+    width: 50px;
+    height: 4px;
+    background-color: white;
+    margin: 5px 0;
+    border-radius: 25px;
+    transition: width 0.3s ease;
+  }
+  /* Estilos específicos para cada línea */
+
+  .one {
+    /* Estilos para el primer div */
+    width: 50px;
+  }
+
+  .two {
+    /* Estilos para el segundo div */
+    width: 35px;
+  }
+
+  .three {
+    /* Estilos para el tercer div */
+    width: 40px;
+  }
+
+  &:hover div{
+    width: 50px;
+
+  }
 `;
 
 const SidebarNav = styled.nav`
@@ -55,14 +96,20 @@ const NavElement = styled.div`
   flex-direction: row;
   gap: 22%;
   align-items: center;
+
+  &:hover {
+    color:  #00FFCC;
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
 `;
 
 const StyledParagraph = styled.p`
-  font-family: 'Press Start 2P', cursive;
+  font-family: "GenericTechno";
   color: #ffffff;
+  color: inherit;
   margin: 0;
   align-items: center;
-  font-size: 150%;
+  font-size: 120%;
 `;
 
 export default function Sidebar() {
@@ -73,9 +120,11 @@ export default function Sidebar() {
   return (
     <>
         <Nav>
-        <NavIcon to="#" onClick={showSidebar}>
-            <FaIcons.FaBars />
-        </NavIcon>
+        <MenuIcon to="#" onClick={showSidebar}>
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </MenuIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>
             <SidebarWrap>
@@ -83,9 +132,9 @@ export default function Sidebar() {
                     <NavIcon to="#" ><FaIcons.FaUser/></NavIcon>
                     <StyledParagraph>LOGIN</StyledParagraph>
                 </NavElement>
-                <NavElement>
-                    <NavIcon to="#" ><IoIcons.IoIosStats/></NavIcon>
-                    <StyledParagraph>BOARD</StyledParagraph>
+                <NavElement to="#" >
+                    <NavIcon><IoIcons.IoIosStats/></NavIcon>
+                    <StyledParagraph >BOARD</StyledParagraph>
                 </NavElement>
                 <NavElement>
                   <NavIcon to="/instructions"><GoIcons.GoInfo /></NavIcon>
