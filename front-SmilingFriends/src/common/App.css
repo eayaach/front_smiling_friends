@@ -17,6 +17,35 @@
   top: 50%; /* Posiciona el div al 50% desde arriba */
   left: 50%; /* Posiciona el div al 50% desde la izquierda */
   transform: translate(-50%, -50%); /* Mueve el div hacia atrás el 50% de su tamaño */
+
+}
+
+button {
+	background: #b5bbbd;
+	border-bottom: 6px inset rgba(0,0,0,.5);
+	border-left: 6px inset rgba(0,0,0,.5);
+	border-right: 6px inset rgba(255, 255, 255, 0.5);
+	border-top: 6px inset rgba(255,255,255,.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 2.2rem;
+	margin: 1rem;
+	min-width: 300px;
+	padding: .5rem;
+	text-transform: uppercase;
+	width: auto;
+  font-family: 'GenericTechno';
+
+}
+
+button:hover {
+  border-color: #84cfe2;
+}
+button:focus,
+button:focus-visible {
+  outline: 8px auto -webkit-focus-ring-color;
 }
 
 
