@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
 import * as GoIcons from 'react-icons/go';
 import React, {createContext, useContext , useState, useEffect} from "react";
+import { AuthContext } from '../auth/AuthContext';
 
 
 const Nav = styled.div`
@@ -122,6 +123,7 @@ export default function Sidebar() {
 
   const [sidebar, setSidebar] = useState(false)
   const showSidebar = () => setSidebar(!sidebar)
+  const {isOnline } = useContext(AuthContext)
 
   return (
     <>
@@ -134,11 +136,11 @@ export default function Sidebar() {
         </Nav>
         <SidebarNav sidebar={sidebar}>
             <SidebarWrap>
-                <Link to="./login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to={isOnline? "./profile":"./login"} style={{ textDecoration: 'none', color: 'inherit' }}>
 
                   <NavElement>
-                      <NavIcon to="./login" ><FaIcons.FaUser/></NavIcon>
-                      <StyledParagraph>LOGIN</StyledParagraph>
+                      <NavIcon><FaIcons.FaUser/></NavIcon>
+                      <StyledParagraph>{isOnline ? 'PROFILE' : 'LOGIN'}</StyledParagraph>
                   </NavElement>
 
                 </Link>

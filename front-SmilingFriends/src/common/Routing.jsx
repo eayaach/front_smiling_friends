@@ -9,7 +9,7 @@ import fondoImg from '../img/fondo.png'
 import Login from '../user/Login'
 import Register from '../user/Register'
 import Profile from '../profile/Profile'
-
+import Home from '../home/Home'
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div`
   display: flex;
@@ -25,6 +25,7 @@ function Routing(){
     return (
         <BrowserRouter>
           <MainContainer>
+            <Home/>
             <Sidebar />
               <Routes>
                 <Route path="/" element={<App />} />
