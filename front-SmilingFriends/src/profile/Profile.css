@@ -1,0 +1,110 @@
+
+.profile-container {
+    position: relative;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    height: 600px;
+    width: 80%;
+    color: rgb(0, 177, 200);
+    font-family: GenericTechno;
+    margin: 0 auto;
+}
+
+p, h2 {
+    color: rgb(0, 177, 200);
+    text-shadow: 2px 2px 4px #e103dd;
+}
+
+/* User Avatar Section */
+.user-info {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 90px;
+    width: 180px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    color: rgb(0, 177, 200);
+}
+
+
+.user-avatar img {
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    /* subir la foto */
+    margin-top: -50px;
+    border-radius: 40%;
+}
+
+.level-bar {
+    background-color: #555;
+    border-radius: 5px;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.level-fill {
+    background-color: #4CAF50;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.section-header {
+    font-size: 1.2em;
+    color: rgb(0, 177, 200);
+    text-shadow: 2px 2px 4px #e103dd;
+    text-align: left;
+}
+
+.content-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.maps-section, .skins-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+    gap: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.maps, .skins {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.maps img, .skins img {
+    width: 100%;       
+    max-width: 150px;   
+    max-height: 150px;   
+    height: auto;       
+    border-radius: 8px;
+    object-fit: cover; 
+}
+
+.button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50%;
+  }
+
+
