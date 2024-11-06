@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Instructions from '../game/Instructions'
 import enanoImg from '../img/enano.png'
 import fondoImg from '../img/fondo.png'
+import Profile from '../profile/Profile'
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ function Routing(){
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
+                <Route path={"/profile"} element={<Profile />}/>
               </Routes>
 
           </MainContainer>
