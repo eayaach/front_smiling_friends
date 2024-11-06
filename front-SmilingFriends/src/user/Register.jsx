@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import './Login.css';
-
+import { Link,  useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
@@ -13,6 +13,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [msg, setMsg] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -33,7 +34,7 @@ export default function Register() {
             console.log(access_token);
             setToken(access_token);
             console.log("Se seteo el token: ", token);
-
+            navigate('/');
 
           }).catch((error) => {
 
