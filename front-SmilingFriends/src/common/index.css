@@ -66,3 +66,8 @@ h2 {
 }
 
 /* Ajusta el tamaño de la imagen para pantallas más pequeñas */
+@media (max-width: 700px) {
+  .enano {
+    display: none;
+  }
+}

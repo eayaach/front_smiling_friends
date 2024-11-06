@@ -5,7 +5,11 @@ import styled from 'styled-components'
 import Instructions from '../game/Instructions'
 import enanoImg from '../img/enano.png'
 import fondoImg from '../img/fondo.png'
+
+import Login from '../user/Login'
+import Register from '../user/Register'
 import Profile from '../profile/Profile'
+
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div`
   display: flex;
@@ -22,11 +26,14 @@ function Routing(){
         <BrowserRouter>
           <MainContainer>
             <Sidebar />
-
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
+
+                <Route path={"/login"} element={<Login/>} />
+                <Route path={"/register"} element={<Register/>} />
                 <Route path={"/profile"} element={<Profile />}/>
+
               </Routes>
 
           </MainContainer>
