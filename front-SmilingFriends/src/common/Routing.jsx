@@ -10,6 +10,7 @@ import Login from '../user/Login'
 import Register from '../user/Register'
 import Profile from '../profile/Profile'
 import Home from '../home/Home'
+import AvailableGames from '../game/AvailableGames'
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ function Routing(){
                 <Route path={"/login"} element={<Login/>} />
                 <Route path={"/register"} element={<Register/>} />
                 <Route path={"/profile"} element={<Profile />}/>
-
+                <Route path={"/available_games"} element={<AvailableGames />}/>
               </Routes>
 
           </MainContainer>
