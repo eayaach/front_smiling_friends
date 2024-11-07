@@ -30,10 +30,12 @@ const NavIcon = styled.div`
 `;
 
 const MenuIcon = styled.div`
+  position: fixed;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
+  margin-top: 4.5rem;
   z-index: 1000;
 
 
@@ -80,7 +82,6 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? '0' : '-100%')}; /* Muestra/oculta la Sidebar */
   transition: 350ms; /* Animación suave para mostrar/ocultar */
   z-index: 999; /* Asegura que la Sidebar esté encima del contenido */
-
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -129,9 +130,9 @@ export default function Sidebar() {
     <>
         <Nav>
         <MenuIcon to="#" onClick={showSidebar}>
-            <div class="one"></div>
-            <div class="two"></div>
-            <div class="three"></div>
+            <div className="one"></div>
+            <div className="two"></div>
+            <div className="three"></div>
         </MenuIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>
