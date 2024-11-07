@@ -7,17 +7,14 @@
 }
 .main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10%;
-  overflow-y: auto;
-}
-
-.card {
-  padding: 2em;
   position: absolute;
-  top: 50%; /* Posiciona el div al 50% desde arriba */
-  left: 50%; /* Posiciona el div al 50% desde la izquierda */
-  transform: translate(-50%, -50%); /* Mueve el div hacia atrás el 50% de su tamaño */
-
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 12px;
 }
 
 button {
@@ -51,12 +48,9 @@ button:focus-visible {
 
 .neon-text {
   font-size: 5vw; /* Tamaño del texto */
-  position: absolute;
   font-weight: bold; /* Fuente en negrita */
   color: #ffffff; /* Color principal del texto */
   text-transform: uppercase; /* Convertir texto a mayúsculas */
-  bottom: 90;
-  margin-left: 10%;
   text-shadow:
     0 0 5px #0ff, /* Brillo pequeño */
     0 0 10px #0ff, /* Brillo más grande */

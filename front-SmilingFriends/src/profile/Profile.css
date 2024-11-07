@@ -13,11 +13,6 @@
     margin: 0 auto;
 }
 
-p, h2 {
-    color: rgb(0, 177, 200);
-    text-shadow: 2px 2px 4px #e103dd;
-}
-
 /* User Avatar Section */
 .user-info {
     position: relative;
