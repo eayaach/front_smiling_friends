@@ -3,10 +3,12 @@ import { AuthContext } from '../contexts/auth/AuthContext';
 import axios from 'axios';
 import './Login.css';
 import { Link,  useNavigate } from 'react-router-dom';
-
+import { SocketContext } from '../contexts/sockets/SocketContext';
 
 export default function Register() {
-    const { token, setToken } = useContext(AuthContext);
+
+    const { token, setToken, userId, setUserId } = useContext(AuthContext);
+    const { connectSocket} = useContext(SocketContext);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -34,6 +36,11 @@ export default function Register() {
             console.log(access_token);
             setToken(access_token);
             console.log("Se seteo el token: ", token);
+            
+            const user_id = response.data.id;
+            console.log(user_id);
+            setUserId(user_id);
+            connectSocket(user_id);
             navigate('/');
 
           }).catch((error) => {
