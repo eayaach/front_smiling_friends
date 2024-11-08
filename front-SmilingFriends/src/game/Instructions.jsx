@@ -49,7 +49,7 @@ export default function Instructions() {
             <div>
               <span className='imagenes'>
                 <div className='img-element'>
-                  <img src={image_dir[1]} className='card'></img>
+                  <img src={image_dir[32]} className='card'></img>
                   <p> carta de inicio</p> 
                 </div>
                 <div className='img-element'>
@@ -76,15 +76,16 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src='' className='card'></img>
-                  <p> carta de inicio</p> 
+                  <img src={image_dir[13]}  className='card'></img>
+                  <p> bloqueo doble</p> 
                 </div>
                 <div className='img-element'>
-                  <img src={cartaoro }  className='card'></img>
-                  <p> carta de oro</p>
+                  <img src={image_dir[8]}  className='card'></img>
+                  <p> bloqueo simple</p>
                 </div>
                 <div className='img-element'>
-                  <img src={cartacarbon}  className='card'></img>
-                  <p> carta de carbon</p>
+                  <img src={image_dir[7]}  className='card'></img>
+                  <p> bloqueo triple</p>
                 </div>
               </span>
               </div>
@@ -95,16 +96,16 @@ export default function Instructions() {
               <div>
               <span className='imagenes'>
                 <div className='img-element'>
-                  <img src={cartainicio} className='card'></img>
-                  <p> carta de inicio</p> 
+                  <img src={image_dir[2]} className='card'></img>
+                  <p> Desbloqueo simple</p> 
                 </div>
                 <div className='img-element'>
-                  <img src={cartaoro }  className='card'></img>
-                  <p> carta de oro</p>
+                  <img src={image_dir[4]}  className='card'></img>
+                  <p> Desbloqueo doble</p>
                 </div>
                 <div className='img-element'>
-                  <img src={cartacarbon}  className='card'></img>
-                  <p> carta de carbon</p>
+                  <img src={image_dir[6]}  className='card'></img>
+                  <p> Desbloqueo triple</p>
                 </div>
               </span>
               </div>
@@ -115,16 +116,16 @@ export default function Instructions() {
               <div>
               <span className='imagenes'>
                 <div className='img-element'>
-                  <img src={cartainicio} className='card'></img>
-                  <p> carta de inicio</p> 
+                  <img src={image_dir[20]} className='card'></img>
+                  <p> cruce triple</p> 
                 </div>
                 <div className='img-element'>
-                  <img src={cartaoro }  className='card'></img>
-                  <p> carta de oro</p>
+                  <img src={image_dir[24] }  className='card'></img>
+                  <p> cruce doble</p>
                 </div>
                 <div className='img-element'>
-                  <img src={cartacarbon}  className='card'></img>
-                  <p> carta de carbon</p>
+                  <img src={image_dir[29]}  className='card'></img>
+                  <p> camino bloqueado</p>
                 </div>
               </span>
               </div>
@@ -135,8 +136,8 @@ export default function Instructions() {
               <div>
               <span className='imagenes'>
                 <div className='img-element'>
-                  <img src={cartainicio} className='card'></img>
-                  <p> carta de inicio</p> 
+                  <img src={image_dir[15]} className='card'></img>
+                  <p> Mapa </p> 
                 </div>
               </span>
               </div>
@@ -144,8 +145,8 @@ export default function Instructions() {
               <div>
               <span className='imagenes'>
                 <div className='img-element'>
-                  <img src={cartainicio} className='card'></img>
-                  <p> carta de inicio</p> 
+                  <img src={image_dir[14]} className='card'></img>
+                  <p> Derrumbe</p> 
                 </div>
               </span>
               </div>

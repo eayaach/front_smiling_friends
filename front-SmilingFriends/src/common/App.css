@@ -7,14 +7,36 @@
 }
 .main {
   display: flex;
+  position: absolute;
   flex-direction: column;
   align-items: center;
-  padding: 10%;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 100%;
+  top: 10%;
   gap: 12px;
+}
+
+/* Estilos para la barra de desplazamiento en navegadores WebKit */
+::-webkit-scrollbar {
+  width: 7px; /* Barra de desplazamiento delgada */
+  color: transparent;
+  margin-right: 1000px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4) /* Fondo transparente del track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black; /* Color tenue para el thumb */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+
+.button-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
 }
 
 button {

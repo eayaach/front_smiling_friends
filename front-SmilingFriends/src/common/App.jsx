@@ -8,14 +8,13 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <div className='main'>
+    <section className='main'>
       <div className="neon-text">Saboteur</div>
-      <div className='card'>
-      <button>START</button>
-      <button onClick={() => navigate('/available_games')}>JOIN</button>
+      <div className='button-container'>
+        <button>START</button>
+        <button onClick={() => navigate('/available_games')}>JOIN</button>
       </div>
-      <div className="neon-text">Saboteur</div>
-    </div>
+    </section>
   )
 }
 
