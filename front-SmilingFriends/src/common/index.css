@@ -37,6 +37,7 @@ h2 {
 }
 
 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -65,3 +66,4 @@ h2 {
     display: none;
   }
 }
+
