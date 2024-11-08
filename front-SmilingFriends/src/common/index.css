@@ -57,6 +57,7 @@ h2 {
   width: 50vh; /* Ajusta el tamaño de la imagen */
   height: auto; /* Mantiene la proporción de la imagen */
   z-index: 1000; /* Z-index más alto que la sidebar */
+
 }
 
 /* Ajusta el tamaño de la imagen para pantallas más pequeñas */

@@ -14,6 +14,7 @@ function App() {
       <button>START</button>
       <button onClick={() => navigate('/available_games')}>JOIN</button>
       </div>
+      <div className="neon-text">Saboteur</div>
     </div>
   )
 }
