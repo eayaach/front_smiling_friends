@@ -1,12 +1,39 @@
-import React from 'react';
 import './Profile.css';
 import Mapa1 from '../img/mapa_1.jpg';
 import Mapa2 from '../img/mapa_2.jpg';
 import Mapa3 from '../img/mapa_3.jpg';
 import Skin1 from '../img/skin_1.jpg';
 import Skin2 from '../img/skin_2.jpg';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../contexts/auth/AuthContext';
+import axios from 'axios';
 
 const Profile = () => {
+
+    const {token} = useContext(AuthContext);
+    const [data, setData] = useState({});
+    const [error, setError] = useState(false);
+    useEffect(() => {
+        // console.log(token);
+        axios({
+          method: 'get',
+          url: `${import.meta.env.VITE_BACKEND_URL}/users/me`,
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            // console.log("hola1");
+            setData(response.data);
+            setError(true);
+            console.log(data);
+          })
+          .catch(error => {
+            setData({});
+            setError(true);
+          });
+      }, []);
+
     return (
         <div className="profile-container">
 
@@ -14,7 +41,7 @@ const Profile = () => {
                 <div className="user-avatar">
                     <img src={Skin1} alt="Avatar" />
                 </div>
-                <h2>USUARIO</h2>
+                <h2>{data.usuario}</h2>
                 <p>LV 2</p>
                 <div className="level-bar">
                     <div className="level-fill" style={{ width: '50%' }}></div>
