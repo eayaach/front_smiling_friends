@@ -1,16 +1,18 @@
 
 .profile-container {
     position: relative;
+
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
     padding: 20px;
     border-radius: 10px;
-    height: 600px;
+    height: 60vh;
     width: 80%;
     color: rgb(0, 177, 200);
     font-family: GenericTechno;
     margin: 0 auto;
+
 }
 
 p, h2 {
@@ -86,12 +88,12 @@ p, h2 {
 }
 
 .maps img, .skins img {
-    width: 100%;       
-    max-width: 150px;   
-    max-height: 150px;   
-    height: auto;       
+    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
+    height: auto;
     border-radius: 8px;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .button {

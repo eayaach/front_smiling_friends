@@ -9,7 +9,7 @@ function App() {
       <div className="card">
         <button>START</button>
       </div>
-      <div class="neon-text">Saboteur</div>
+      <div className="neon-text">Saboteur</div>
 
     </div>
   )

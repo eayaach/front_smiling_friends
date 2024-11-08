@@ -60,9 +60,10 @@ h2 {
   position: absolute; /* Posiciona la imagen de forma absoluta dentro del contenedor */
   bottom: 0; /* Posición pegada al borde inferior */
   left: 0; /* Posición pegada a la izquierda */
-  width: 50vh; /* Ajusta el tamaño de la imagen */
+  width: 40vh; /* Ajusta el tamaño de la imagen */
   height: auto; /* Mantiene la proporción de la imagen */
   z-index: 1000; /* Z-index más alto que la sidebar */
+
 }
 
 /* Ajusta el tamaño de la imagen para pantallas más pequeñas */

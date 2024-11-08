@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
 import * as GoIcons from 'react-icons/go';
-import React, {createContext, useContext , useState, useEffect} from "react";
-import { AuthContext } from '../auth/AuthContext';
-
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../contexts/auth/AuthContext';
 
 const Nav = styled.div`
   height: 10%;
@@ -15,8 +14,6 @@ const Nav = styled.div`
   align-items: center;
   position: relative;
   top: 0%;
-
-
 `;
 
 const NavIcon = styled.div`
@@ -36,8 +33,6 @@ const MenuIcon = styled.div`
   margin-left: 2rem;
   z-index: 1000;
 
-
-
   div {
     width: 50px;
     height: 4px;
@@ -46,26 +41,21 @@ const MenuIcon = styled.div`
     border-radius: 25px;
     transition: width 0.3s ease;
   }
-  /* Estilos específicos para cada línea */
 
   .one {
-    /* Estilos para el primer div */
     width: 50px;
   }
 
   .two {
-    /* Estilos para el segundo div */
     width: 35px;
   }
 
   .three {
-    /* Estilos para el tercer div */
     width: 40px;
   }
 
-  &:hover div{
+  &:hover div {
     width: 50px;
-
   }
 `;
 
@@ -76,11 +66,10 @@ const SidebarNav = styled.nav`
   display: flex;
   justify-content: center;
   position: fixed;
-  top: 0; /* Se ajusta en la parte superior */
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')}; /* Muestra/oculta la Sidebar */
-  transition: 350ms; /* Animación suave para mostrar/ocultar */
-  z-index: 999; /* Asegura que la Sidebar esté encima del contenido */
-
+  top: 0;
+  left: ${({ $sidebar }) => ($sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index: 999;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -90,7 +79,7 @@ const SidebarNav = styled.nav`
 const SidebarWrap = styled.div`
   width: 100%;
   padding: 10%;
-  margin-top: 30%;
+  margin-top: 40%;
   display: flex;
   flex-direction: column;
   gap: 10%;
@@ -105,13 +94,13 @@ const NavElement = styled.div`
   align-items: center;
 
   &:hover {
-    color:  #00FFCC;
+    color: #00ffcc;
     filter: drop-shadow(0 0 2em #61dafbaa);
   }
 `;
 
 const StyledParagraph = styled.p`
-  font-family: "GenericTechno";
+  font-family: 'GenericTechno';
   color: #ffffff;
   color: inherit;
   margin: 0;
@@ -120,47 +109,49 @@ const StyledParagraph = styled.p`
 `;
 
 export default function Sidebar() {
-
-  const [sidebar, setSidebar] = useState(false)
-  const showSidebar = () => setSidebar(!sidebar)
-  const {isOnline } = useContext(AuthContext)
-
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+  const { isOnline } = useContext(AuthContext);
+  console.log(isOnline);
   return (
     <>
-        <Nav>
-        <MenuIcon to="#" onClick={showSidebar}>
-            <div class="one"></div>
-            <div class="two"></div>
-            <div class="three"></div>
+      <Nav>
+        <MenuIcon onClick={showSidebar}>
+          <div className="one"></div>
+          <div className="two"></div>
+          <div className="three"></div>
         </MenuIcon>
-        </Nav>
-        <SidebarNav sidebar={sidebar}>
-            <SidebarWrap>
-                <Link to={isOnline? "./profile":"./login"} style={{ textDecoration: 'none', color: 'inherit' }}>
+      </Nav>
+      <SidebarNav $sidebar={sidebar}>
+        <SidebarWrap>
+          <Link to={isOnline ? './profile' : './login'} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <NavElement>
+              <NavIcon>
+                <FaIcons.FaUser />
+              </NavIcon>
+              <StyledParagraph>{isOnline ? 'PROFILE' : 'LOGIN'}</StyledParagraph>
+            </NavElement>
+          </Link>
 
-                  <NavElement>
-                      <NavIcon><FaIcons.FaUser/></NavIcon>
-                      <StyledParagraph>{isOnline ? 'PROFILE' : 'LOGIN'}</StyledParagraph>
-                  </NavElement>
+          <Link to="./login" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <NavElement>
+              <NavIcon>
+                <IoIcons.IoIosStats />
+              </NavIcon>
+              <StyledParagraph>BOARD</StyledParagraph>
+            </NavElement>
+          </Link>
 
-                </Link>
-
-                <Link to="./login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <NavElement to="#" >
-                      <NavIcon><IoIcons.IoIosStats/></NavIcon>
-                      <StyledParagraph >BOARD</StyledParagraph>
-                  </NavElement>
-                </Link>
-
-
-                <Link to="./instructions" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <NavElement>
-                    <NavIcon><GoIcons.GoInfo /></NavIcon>
-                    <StyledParagraph>RULES</StyledParagraph>
-                  </NavElement>
-                </Link>
-            </SidebarWrap>
-        </SidebarNav>
+          <Link to="./instructions" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <NavElement>
+              <NavIcon>
+                <GoIcons.GoInfo />
+              </NavIcon>
+              <StyledParagraph>RULES</StyledParagraph>
+            </NavElement>
+          </Link>
+        </SidebarWrap>
+      </SidebarNav>
     </>
   );
 }
