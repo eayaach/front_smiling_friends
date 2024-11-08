@@ -27,10 +27,12 @@ const NavIcon = styled.div`
 `;
 
 const MenuIcon = styled.div`
+  position: fixed;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
+  margin-top: 4.5rem;
   z-index: 1000;
 
   div {

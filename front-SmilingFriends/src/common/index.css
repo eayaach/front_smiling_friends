@@ -11,6 +11,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  height: auto;
+  background-image: url('../img/fondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: "GenericTechno", sans-serif;
 }
 
 @font-face {
@@ -19,21 +28,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
-body {
-  font-family: "GenericTechno", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-position: center;
-  background-repeat:no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  margin: 0;
-  justify-content: center;
-}
-
 h1 {
   text-align: center;
   color: #9d3bad;
@@ -57,10 +51,10 @@ h2 {
 }
 
 .enano {
-  position: absolute; /* Posiciona la imagen de forma absoluta dentro del contenedor */
-  bottom: 0; /* Posición pegada al borde inferior */
-  left: 0; /* Posición pegada a la izquierda */
-  width: 40vh; /* Ajusta el tamaño de la imagen */
+  position: fixed; /* Posiciona la imagen de forma absoluta dentro del contenedor */
+  top: 50%; /* Posición pegada al borde inferior */
+  right: 78%; /* Posición pegada a la izquierda */
+  width: 50vh; /* Ajusta el tamaño de la imagen */
   height: auto; /* Mantiene la proporción de la imagen */
   z-index: 1000; /* Z-index más alto que la sidebar */
 
