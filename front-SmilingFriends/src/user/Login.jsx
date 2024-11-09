@@ -29,10 +29,11 @@ export default function Login() {
         setMsg(response.data.msg);
         setUserId(response.data.id);
         connectSocket(response.data.id);
+        console.log(response.data.access_token);
         const access_token = response.data.access_token;
         console.log(access_token);
         setToken(access_token);
-        console.log("Se seteo el token: ", token);
+        console.log("Se seteo el token: ", access_token);
         navigate('/');
 
       }).catch((error) => {
