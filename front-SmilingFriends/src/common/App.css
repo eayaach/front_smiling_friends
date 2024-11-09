@@ -39,7 +39,7 @@
   flex-direction: row;
 }
 
-button {
+.startButtons {
 	background: #b5bbbd;
 	border-bottom: 6px inset rgba(0,0,0,.5);
 	border-left: 6px inset rgba(0,0,0,.5);
@@ -59,11 +59,11 @@ button {
 
 }
 
-button:hover {
+.startButtons:hover {
   border-color: #84cfe2;
 }
-button:focus,
-button:focus-visible {
+.startButtons:focus,
+.startButtons:focus-visible {
   outline: 8px auto -webkit-focus-ring-color;
 }
 

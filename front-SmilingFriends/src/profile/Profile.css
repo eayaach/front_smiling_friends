@@ -1,48 +1,57 @@
 
 .profile-container {
-    position: relative;
-
+    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    height: 60vh;
-    width: 80%;
-    color: rgb(0, 177, 200);
-    font-family: GenericTechno;
-    margin: 0 auto;
-
+    height: 80%;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 10%;
 }
 
 /* User Avatar Section */
 .user-info {
     position: relative;
     text-align: center;
-    margin-top: 15px;
-    margin-right: 90px;
-    width: 180px;
-    height: 300px;
-    border-radius: 10px;
-    background-color: aliceblue;
-    color: rgb(0, 177, 200);
+    width: 20%;
+    color: #fff;
+    height: 40%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 5%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 10px 10px 15px rgba(0, 0, 0, 0.2);
+
 }
 
+
+.user-avatar {
+    position: absolute;
+    top: -10%; /* Eleva la imagen por encima del .user-info */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    width: 40%;
+}
 
 .user-avatar img {
-    padding: 20px;
-    width: 100px;
-    height: 100px;
-    /* subir la foto */
-    margin-top: -50px;
-    border-radius: 40%;
+    width: 100%;
+    height: 70%;
+    border-radius: 30%; /* Haz la imagen redonda */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
 
+.user-info h2 {
+    margin-top: 40%;
+    font-size: 2vw;
+    color: white;
+
+}
 .level-bar {
     background-color: #555;
     border-radius: 5px;
-    width: 80%;
-    margin: 10px auto;
+    width: 100%;
 }
 
 .level-fill {
@@ -53,8 +62,8 @@
 
 .section-header {
     font-size: 1.2em;
-    color: rgb(0, 177, 200);
-    text-shadow: 2px 2px 4px #e103dd;
+    color: white;
+    text-shadow: rgb(0, 177, 200);
     text-align: left;
 }
 
@@ -67,41 +76,53 @@
 
 .maps-section, .skins-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    max-width: 90%;
-    gap: 10px;
-    background-color: aliceblue;
+    width: 40vw;
+    height: 25vh;
     border-radius: 10px;
-    padding: 20px;
+    padding: 3%;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 .maps, .skins {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    width: 100%;
+    height: 100%;
+    gap: 5%;
 }
 
 .maps img, .skins img {
-    width: 100%;
-    max-width: 150px;
-    max-height: 150px;
-    height: auto;
+    width: 30%;
+    height: 80%;
     border-radius: 8px;
     object-fit: cover;
 }
 
-.button {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 50%;
-  }
+.ButtonContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transform: translateX(-25%);
+}
+.LogoutButton{
 
-
+    width: 50%;
+    background: #b5bbbd;
+	border-bottom: 6% inset rgba(0,0,0,.5);
+	border-left: 6% inset rgba(0,0,0,.5);
+	border-right: 6% inset rgba(255, 255, 255, 0.5);
+	border-top: 6% inset rgba(255,255,255,.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	margin: 1rem;
+	padding: .5rem;
+	text-transform: uppercase;
+	width: auto;
+    font-family: 'GenericTechno';
+}
