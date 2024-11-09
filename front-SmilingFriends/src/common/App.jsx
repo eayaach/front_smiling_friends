@@ -11,8 +11,8 @@ function App() {
     <section className='main'>
       <div className="neon-text">Saboteur</div>
       <div className='button-container'>
-        <button>START</button>
-        <button onClick={() => navigate('/available_games')}>JOIN</button>
+        <button className="startButtons">START</button>
+        <button className="startButtons" onClick={() => navigate('/available_games')}>JOIN</button>
       </div>
     </section>
   )
