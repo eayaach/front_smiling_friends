@@ -33,11 +33,16 @@ function AvailableGames() {
         const data = await fetchGames();
         setGames(data.partidas);
         setVacio(data.vacio);
+        socket.current?.emit("UsuarioEntraPartidas", {UserId: localStorage.getItem("user_id")});
       } catch (error) {
         setError(true);
       }
     };
     getGames();
+    return () => {
+      socket.current?.emit('UsuarioSalePartidas', { message: 'Usuario ha salido de la vista de partidas', UserId: localStorage.getItem("user_id")});
+      console.log("saliendo de la vista");
+    }
   }, []);
 
   useEffect(() => {
@@ -48,27 +53,13 @@ function AvailableGames() {
       setVacio(data.vacio);
     };
 
-    socket.current?.on('partidasUpdate', handleGameUpdate);
+    socket.current?.on('PartidasUpdate', handleGameUpdate);
     
     return () => {
-      socket.current?.off('partidasUpdate', handleGameUpdate);
+      socket.current?.off('PartidasUpdate', handleGameUpdate);
     };
   }, [socket]);
 
-  // Enviar evento al servidor cuando el usuario salga de la vista
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      socket.current?.emit('usuarioSalioVista', { message: 'Usuario ha salido de la vista de partidas' });
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    
-    // Limpiar el event listener al desmontar el componente
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-      handleBeforeUnload(); // Emitir una última vez al desmontarse el componente
-    };
-  }, [socket]);
 
   const joinGame = (gameId) => {
     console.log(`Unirse a la partida con ID: ${gameId}`);
