@@ -7,6 +7,7 @@ import Skin2 from '../img/skin_2.jpg';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
 
@@ -16,47 +17,37 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [progress, setProgress] = useState(0);
 
-    const handleLogout = async (event) => {
-        event.preventDefault();
-
-        // console.log(isOnline);
-
-      }
-
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // console.log(token);
         axios({
-          method: 'get',
-          url: `${import.meta.env.VITE_BACKEND_URL}/users/me`,
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+            method: 'get',
+            url: `${import.meta.env.VITE_BACKEND_URL}/users/me`,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         })
-          .then(response => {
-            // console.log("hola1");
+        .then(response => {
             setData(response.data);
             setError(false);
-            // console.log('1');
-            // console.log(response.data);
-            // console.log('2');
-            // console.log(data);
-            setProgress(((data.progress)/10)*100);
-
-          })
-          .catch(error => {
+            setProgress(((response.data.progress) / 10) * 100);
+        })
+        .catch(error => {
             setData({});
             setError(true);
-          })
-          .finally(() =>{
+        })
+        .finally(() => {
             setLoading(false);
-          });
-      }, []);
+        });
+    }, [token]);
+
+    const handleEditProfile = () => {
+        navigate('/modificar-perfil');
+    };
 
     return (
         <>
-            {loading? (<p>Cargando...</p>) : error? (<p>Hubo un error al cargar los datos.</p>) : (
-
+            {loading ? (<p>Cargando...</p>) : error ? (<p>Hubo un error al cargar los datos.</p>) : (
                 <div className="profile-container">
 
                     <div className="user-info">
@@ -68,10 +59,12 @@ const Profile = () => {
                         <div className="level-bar">
                             <div className="level-fill" style={{ width: `${progress}%` }}></div>
                         </div>
+                        <button onClick={handleEditProfile} className="boton-editar">
+                            Editar Perfil
+                        </button>
                     </div>
-                    <div className="content-section">
 
-                        {/* Título y Contenido de Mapas */}
+                    <div className="content-section">
                         <div className="section-header">MAPAS</div>
                         <div className="maps-section">
                             <div className="maps">
@@ -81,19 +74,17 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        {/* Título y Contenido de Skins */}
                         <div className="section-header">SKINS</div>
                         <div className="skins-section">
                             <div className="skins">
                                 <img src={Skin1} alt="Skin 1" />
                                 <img src={Skin2} alt="Skin 2" />
                                 <img src={Skin2} alt="Skin 3" />
-
                             </div>
                         </div>
                     </div>
-                </div>)
-            }
+                </div>
+            )}
         </>
     );
 };

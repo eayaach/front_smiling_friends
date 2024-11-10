@@ -126,3 +126,21 @@
 	width: auto;
     font-family: 'GenericTechno';
 }
+
+.boton-editar {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    margin: 8px 0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'GenericTechno';
+    transition: background-color 0.3s ease;
+  }
+  
+  .boton-editar:hover {
+    background-color: #45a049;
+  }
+  
