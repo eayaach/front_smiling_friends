@@ -9,6 +9,7 @@ import fondoImg from '../img/fondo.png'
 import Login from '../user/Login'
 import Register from '../user/Register'
 import Profile from '../profile/Profile'
+import ModificarPerfil from '../profile/ModificarPerfil'
 import Home from '../home/Home'
 import AvailableGames from '../game/AvailableGames'
 // Contenedor principal que usa Flexbox
@@ -23,7 +24,7 @@ function Routing(){
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
-
+                <Route path={"/modificar-perfil"} element={<ModificarPerfil />}/>
                 <Route path={"/login"} element={<Login/>} />
                 <Route path={"/register"} element={<Register/>} />
                 <Route path={"/profile"} element={<Profile />}/>

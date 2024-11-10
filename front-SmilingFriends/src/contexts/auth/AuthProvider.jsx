@@ -12,6 +12,13 @@ function AuthProvider({ children }) {
     function logout() {
         setToken(null);
         setIsOnline(false);
+        setUserId(null);
+        setGameId(null);
+
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('game_id');
+
     }
 
     useEffect(() => {
@@ -31,7 +38,7 @@ function AuthProvider({ children }) {
 
 
     return (
-        <AuthContext.Provider value={{ token, setToken, logout, isOnline , setUserId, userId}}>
+        <AuthContext.Provider value={{ token, setToken, logout, isOnline , setUserId, userId, gameId, setGameId}}>
             {children}
         </AuthContext.Provider>
     );
