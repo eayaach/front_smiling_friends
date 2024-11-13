@@ -53,9 +53,9 @@ h2 {
 
 .enano {
   position: fixed; /* Posiciona la imagen de forma absoluta dentro del contenedor */
-  top: 50%; /* Posición pegada al borde inferior */
-  right: 78%; /* Posición pegada a la izquierda */
-  width: 50vh; /* Ajusta el tamaño de la imagen */
+  top: 65%; /* Posición pegada al borde inferior */
+  right: 83%; /* Posición pegada a la izquierda */
+  width: 35vh; /* Ajusta el tamaño de la imagen */
   height: auto; /* Mantiene la proporción de la imagen */
   z-index: 1000; /* Z-index más alto que la sidebar */
 

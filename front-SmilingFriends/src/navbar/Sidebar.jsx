@@ -152,6 +152,15 @@ export default function Sidebar() {
               <StyledParagraph>RULES</StyledParagraph>
             </NavElement>
           </Link>
+
+          <Link to="./nosotros" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <NavElement>
+              <NavIcon>
+                <IoIcons.IoMdPeople />
+              </NavIcon>
+              <StyledParagraph>ABOUT US</StyledParagraph>
+            </NavElement>
+          </Link>
         </SidebarWrap>
       </SidebarNav>
     </>
