@@ -3,6 +3,7 @@ import App from './App'
 import Sidebar from '../navbar/Sidebar'
 import styled from 'styled-components'
 import Instructions from '../game/Instructions'
+import Nosotros from '../game/Nosotros'
 import enanoImg from '../img/enano.png'
 import fondoImg from '../img/fondo.png'
 
@@ -24,6 +25,7 @@ function Routing(){
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
+                <Route path={"/nosotros"} element={<Nosotros />}/>
                 <Route path={"/modificar-perfil"} element={<ModificarPerfil />}/>
                 <Route path={"/login"} element={<Login/>} />
                 <Route path={"/register"} element={<Register/>} />
