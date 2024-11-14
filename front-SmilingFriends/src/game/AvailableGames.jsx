@@ -46,19 +46,20 @@ function AvailableGames() {
   }, []);
 
   useEffect(() => {
+    console.log("antes de entrar al socket");
     if (!socket) return;
-    
+    console.log("entrando al socket");
     const handleGameUpdate = (data) => {
       setGames(data.partidas);
       setVacio(data.vacio);
     };
 
-    socket.current?.on('PartidasUpdate', handleGameUpdate);
-    
+    socket.current?.on('PartidasUpdated', handleGameUpdate);
+
     return () => {
-      socket.current?.off('PartidasUpdate', handleGameUpdate);
+      socket.current?.off('PartidasUpdated', handleGameUpdate);
     };
-  }, [socket]);
+  }, [socket.current]);
 
 
   const joinGame = (gameId) => {
