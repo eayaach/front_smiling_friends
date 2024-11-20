@@ -1,0 +1,27 @@
+.label-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-gap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+input{
+    padding: 5%;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    font-size: 0.9em;
+}
+
+.up {
+    margin-top: 0 !important;
+    width: auto !important;
+}
