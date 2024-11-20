@@ -26,6 +26,7 @@ function AvailableGames() {
   const { token } = useContext(AuthContext);
   const [vacio, setVacio] = useState(false);
   const { socket } = useContext(SocketContext);
+  const userId = localStorage.getItem("user_id");
 
   useEffect(() => {
     const getGames = async () => {
@@ -67,7 +68,7 @@ function AvailableGames() {
   };
   console.log(games);
   return (
-    <div>
+    <div className="GamesContainer">
       <h2>Partidas Disponibles</h2>
       <table className="games-table">
         <thead>

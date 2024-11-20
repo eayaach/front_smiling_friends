@@ -8,7 +8,7 @@ function AuthProvider({ children }) {
     const [isOnline, setIsOnline] = useState(!!initialToken && initialToken !== "null");
     const [userId, setUserId] = useState(localStorage.getItem('user_id') || null);
     const [gameId, setGameId] = useState(localStorage.getItem('game_id') || null);
-
+    
     function logout() {
         setToken(null);
         setIsOnline(false);

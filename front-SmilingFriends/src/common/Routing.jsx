@@ -13,6 +13,8 @@ import Profile from '../profile/Profile'
 import ModificarPerfil from '../profile/ModificarPerfil'
 import Home from '../home/Home'
 import AvailableGames from '../game/AvailableGames'
+import CreateGames from '../game/CreateGames'
+import WaitingRoom from '../game/WaitingRoom'
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div``
 
@@ -31,6 +33,8 @@ function Routing(){
                 <Route path={"/register"} element={<Register/>} />
                 <Route path={"/profile"} element={<Profile />}/>
                 <Route path={"/available_games"} element={<AvailableGames />}/>
+                <Route path={"/create_games"} element={<CreateGames/>}/>
+                <Route path={"/waiting_room/:id"} element={<WaitingRoom/>}/>
               </Routes>
 
           </MainContainer>
