@@ -1,31 +1,37 @@
-.games-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
   
-  .games-table th, .games-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+.join-button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background-color: #4CAF50; /* Color verde */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.join-button:hover {
+  background-color: #45a049;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
+  gap: 10px; /* Espaciado entre filas y columnas */
+  padding: 10px; /* Espaciado interno */
+  justify-items: center; /* Centra horizontalmente los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+/* Para pantallas medianas */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
   }
-  
-  .games-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* 1 columna */
   }
-  
-  .join-button {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    background-color: #4CAF50; /* Color verde */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .join-button:hover {
-    background-color: #45a049;
-  }
-  
+}

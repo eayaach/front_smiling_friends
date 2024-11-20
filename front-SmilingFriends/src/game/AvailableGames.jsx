@@ -3,7 +3,7 @@ import './AvailableGames.css';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import axios from 'axios';
 import { SocketContext } from '../contexts/sockets/SocketContext';
-
+import PartidaWidget from '../gamecomponents/partidawidget'
 const fetchGames = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -34,6 +34,7 @@ function AvailableGames() {
         setGames(data.partidas);
         setVacio(data.vacio);
         socket.current?.emit("UsuarioEntraPartidas", {UserId: localStorage.getItem("user_id")});
+        console.log(games);
       } catch (error) {
         setError(true);
       }
@@ -43,6 +44,7 @@ function AvailableGames() {
       socket.current?.emit('UsuarioSalePartidas', { message: 'Usuario ha salido de la vista de partidas', UserId: localStorage.getItem("user_id")});
       console.log("saliendo de la vista");
     }
+
   }, []);
 
   useEffect(() => {
@@ -67,36 +69,22 @@ function AvailableGames() {
   };
   console.log(games);
   return (
-    <div>
-      <h2>Partidas Disponibles</h2>
-      <table className="games-table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Jugadores</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          {games.length > 0 ? (
-            games.map(game => (
-              <tr key={game.id}>
-                <td>{game.id_creador}</td>
-                <td>{game.jugadores_actuales} / {game.jugadores_max}</td>
-                <td>
-                  <button className="join-button" onClick={() => joinGame(game.id)}>
-                    Unirse
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="4">No hay partidas disponibles</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+    <div className='section'>
+      <h1>Partidas Disponibles</h1>
+      {games.length > 0 ? (
+    <div className="grid">
+      {games.map(game => (
+        <PartidaWidget
+          key={game.id}
+          creador={game.id_creador}
+          actuales={game.jugadores_actuales}
+          max={game.jugadores_max}
+        />
+      ))}
+    </div>
+  ) : (
+    <h2>No hay partidas disponibles</h2>
+  )}
     </div>
   );
 }
