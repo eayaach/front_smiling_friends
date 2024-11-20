@@ -21,9 +21,8 @@ const MainContainer = styled.div``
 function Routing(){
     return (
         <BrowserRouter>
-          <MainContainer>
-            <Home/>
             <Sidebar />
+            <Home/>
               <Routes>
                 <Route path="/" element={<App />} />
                 <Route path={"/instructions"} element={<Instructions />}/>
@@ -36,9 +35,7 @@ function Routing(){
                 <Route path={"/create_games"} element={<CreateGames/>}/>
                 <Route path={"/waiting_room/:id"} element={<WaitingRoom/>}/>
               </Routes>
-
-          </MainContainer>
-          <img src={enanoImg} className="enano" alt="Enano" />
+            <img src={enanoImg} className="enano" alt="Enano" />
         </BrowserRouter>
       );
 }

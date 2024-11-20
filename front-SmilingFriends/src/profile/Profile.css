@@ -1,14 +1,10 @@
 
 .profile-container {
-    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 80%;
     width: 60%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     gap: 10%;
 }
 
@@ -26,16 +22,6 @@
 
 }
 
-
-.user-avatar {
-    position: absolute;
-    top: -10%; /* Eleva la imagen por encima del .user-info */
-    left: 50%;
-    transform: translateX(-50%); /* Centra horizontalmente */
-    width: 40%;
-}
-
-
 .user-avatar img {
     width: 100%;
     height: 70%;
@@ -44,8 +30,7 @@
 }
 
 .user-info h2 {
-    margin-top: 40%;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: white;
 
 }
@@ -102,13 +87,6 @@
     object-fit: cover;
 }
 
-.ButtonContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    transform: translateX(-25%);
-}
 .LogoutButton{
 
     width: 50%;

@@ -44,7 +44,8 @@ export default function Login() {
   };
 
   return (
-    <div className="Login">
+    <div className='container'>
+      <div className="section Login">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -73,5 +74,8 @@ export default function Login() {
         Don't have an account? <Link to="/register" style={{ textDecoration: 'none', color: 'inherit' }}>Register</Link>
       </div>
     </div>
+
+    </div>
+
   );
 }
