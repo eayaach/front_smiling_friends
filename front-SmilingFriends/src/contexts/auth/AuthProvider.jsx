@@ -8,7 +8,7 @@ function AuthProvider({ children }) {
     const [isOnline, setIsOnline] = useState(!!initialToken && initialToken !== "null");
     const [userId, setUserId] = useState(localStorage.getItem('user_id') || null);
     const [gameId, setGameId] = useState(localStorage.getItem('game_id') || null);
-    
+
     function logout() {
         setToken(null);
         setIsOnline(false);
@@ -34,7 +34,12 @@ function AuthProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem('user_id', userId);
-    }, [userId]);
+        localStorage.setItem('game_id', gameId);
+    }, [userId, gameId]);
+
+    useEffect(() => {
+        localStorage.setItem('game_id', gameId);
+    }, [gameId]);
 
 
     return (
