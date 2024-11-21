@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import cartainicio from '../img/Cartas/32.png'
 import cartaoro from '../img/Cartas/33.png'
 import cartacarbon from '../img/Cartas/34.png'
-import {cargar_cartas}  from '../common/images';  
+import {cargar_cartas}  from '../common/images';
 
 
 export default function Instructions() {
@@ -50,7 +50,7 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src={image_dir[32]} className='card'></img>
-                  <p> carta de inicio</p> 
+                  <p> carta de inicio</p>
                 </div>
                 <div className='img-element'>
                   <img src={image_dir[33]}  className='card'></img>
@@ -77,7 +77,7 @@ export default function Instructions() {
                 <div className='img-element'>
                   <img src='' className='card'></img>
                   <img src={image_dir[13]}  className='card'></img>
-                  <p> bloqueo doble</p> 
+                  <p> bloqueo doble</p>
                 </div>
                 <div className='img-element'>
                   <img src={image_dir[8]}  className='card'></img>
@@ -97,7 +97,7 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src={image_dir[2]} className='card'></img>
-                  <p> Desbloqueo simple</p> 
+                  <p> Desbloqueo simple</p>
                 </div>
                 <div className='img-element'>
                   <img src={image_dir[4]}  className='card'></img>
@@ -117,7 +117,7 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src={image_dir[20]} className='card'></img>
-                  <p> cruce triple</p> 
+                  <p> cruce triple</p>
                 </div>
                 <div className='img-element'>
                   <img src={image_dir[24] }  className='card'></img>
@@ -137,7 +137,7 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src={image_dir[15]} className='card'></img>
-                  <p> Mapa </p> 
+                  <p> Mapa </p>
                 </div>
               </span>
               </div>
@@ -146,7 +146,7 @@ export default function Instructions() {
               <span className='imagenes'>
                 <div className='img-element'>
                   <img src={image_dir[14]} className='card'></img>
-                  <p> Derrumbe</p> 
+                  <p> Derrumbe</p>
                 </div>
               </span>
               </div>
@@ -159,7 +159,7 @@ export default function Instructions() {
               <li>Carreta</li>
             </ul>
             </div>
-          
+
 
           <div className="text-element">
             <h2>5. Reglas de bloqueo y desbloqueo</h2>
@@ -198,7 +198,7 @@ export default function Instructions() {
               <li>Los mineros ganan si llegan al oro.</li>
             </ul>
           </div>
-        </div> 
+        </div>
       </div>
     </>
   );

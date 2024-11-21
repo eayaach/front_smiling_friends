@@ -3,6 +3,7 @@ import React, { useEffect, useState , useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import axios, { getAdapter } from 'axios';
 
+
 export default function WaitingRoom() {
   const { id } = useParams(); // Obtener el ID de la URL
   const [gameData, setGameData] = useState(null); // Estado para los datos de la partida
@@ -43,6 +44,7 @@ export default function WaitingRoom() {
       <h1>Game of creator {gameData.nombre_creador}</h1>
       <p><strong>Max Players:</strong> {gameData.max_players}</p>
       <p><strong>Status:</strong> {gameData.estado}</p>
+
     </div>
   );
 }
