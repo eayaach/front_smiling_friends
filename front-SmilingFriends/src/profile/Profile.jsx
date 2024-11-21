@@ -1,9 +1,5 @@
 import './Profile.css';
-import Mapa1 from '../img/mapa_1.jpg';
-import Mapa2 from '../img/mapa_2.jpg';
-import Mapa3 from '../img/mapa_3.jpg';
-import Skin1 from '../img/skin_1.jpg';
-import Skin2 from '../img/skin_2.jpg';
+import {cargar_cartas, cargar_mapas, cargar_skins} from '../common/images'
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import axios from 'axios';
@@ -16,10 +12,19 @@ const Profile = () => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
     const [progress, setProgress] = useState(0);
-
-    const navigate = useNavigate();
+    const [mapas, setMapas] = useState({});
+    const [skins, setSkins] = useState({});
 
     useEffect(() => {
+        async function fetchImages() {
+            const mapas = await cargar_mapas();
+            console.log(mapas);
+            setMapas(mapas);
+            const skins = await cargar_skins();
+            setSkins(skins);
+        }
+
+        fetchImages();
         axios({
             method: 'get',
             url: `${import.meta.env.VITE_BACKEND_URL}/users/me`,
@@ -31,6 +36,7 @@ const Profile = () => {
             setData(response.data);
             setError(false);
             setProgress(((response.data.progress) / 10) * 100);
+            console.log(data);
         })
         .catch(error => {
             setData({});
@@ -52,7 +58,7 @@ const Profile = () => {
 
                     <div className="user-info">
                         <div className="user-avatar">
-                            <img src={Skin1} alt="Avatar" />
+                            <img src={skins[data.imageID]} alt="Avatar" />
                         </div>
                         <h2>{data.usuario}</h2>
                         <p>LV {data.level}</p>
@@ -68,18 +74,18 @@ const Profile = () => {
                         <div className="section-header">MAPAS</div>
                         <div className="maps-section">
                             <div className="maps">
-                                <img src={Mapa1} alt="Mapa 1" />
-                                <img src={Mapa2} alt="Mapa 2" />
-                                <img src={Mapa3} alt="Mapa 3" />
+                            {Object.keys(mapas).map(clave => (
+                                <img id={clave} src={mapas[clave]} alt={clave} />
+                            ))}
                             </div>
                         </div>
 
                         <div className="section-header">SKINS</div>
                         <div className="skins-section">
                             <div className="skins">
-                                <img src={Skin1} alt="Skin 1" />
-                                <img src={Skin2} alt="Skin 2" />
-                                <img src={Skin2} alt="Skin 3" />
+                            {Object.keys(skins).map(clave => (
+                                <img src={skins[clave]} alt={clave} />
+                            ))}
                             </div>
                         </div>
                     </div>

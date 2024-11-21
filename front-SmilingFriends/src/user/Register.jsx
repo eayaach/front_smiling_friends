@@ -36,7 +36,7 @@ export default function Register() {
             console.log(access_token);
             setToken(access_token);
             console.log("Se seteo el token: ", token);
-            
+
             const user_id = response.data.id;
             console.log(user_id);
             setUserId(user_id);

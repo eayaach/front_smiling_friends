@@ -43,9 +43,10 @@ export default function CreateGames() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log(partidaResponse);
+      // console.log(partidaResponse);
       const partidaId = partidaResponse.data.id; // Guardamos el ID en una variable local
-      setGameId(partidaId); // Actualizamos el estado (aunque no lo usamos aquí directamente)
+      await setGameId(partidaId);
+      console.log(gameId);
 
       console.log("Se creó la partida con éxito");
 
@@ -56,11 +57,11 @@ export default function CreateGames() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log("El jugador se unió a la partida con éxito");
+      // console.log("El jugador se unió a la partida con éxito");
       // Redirigimos a la sala de espera
       navigate(`/waiting_room/${partidaId}`);
     } catch (error) {
-      console.error("Ocurrió un error:", error);
+      // console.error("Ocurrió un error:", error);
 
       if (error.response && error.response.data && error.response.data.msg) {
         setMsg(error.response.data.msg);

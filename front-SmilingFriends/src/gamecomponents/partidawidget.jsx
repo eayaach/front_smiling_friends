@@ -1,6 +1,8 @@
 import React from 'react';
 
-function PartidaWidget({creador, actuales, max}) {
+
+function PartidaWidget({creador, actuales, max, id}) {
+
     const handleUserJoin = () => {
         return;
     }
