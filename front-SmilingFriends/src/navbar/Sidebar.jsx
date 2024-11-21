@@ -31,8 +31,8 @@ const MenuIcon = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin-left: 1.5rem;
-  margin-top: 4.5rem;
+  left: 1.75rem;
+  top: 2rem;
   z-index: 1000;
 
   div {

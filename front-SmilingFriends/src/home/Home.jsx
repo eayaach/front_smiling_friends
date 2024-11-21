@@ -12,7 +12,7 @@ const HomeIcon = styled.div`
   font-size: 3.5em;
   cursor: pointer;
   position: fixed;
-  top: 1rem;
+  top: 1.5rem;
   right: 1rem;
   z-index: 1000;
 `;

@@ -1,19 +1,11 @@
-#root {
-  max-width: 100%;
-  min-width: 100%;
-  margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
-}
+
 .main {
   display: flex;
-  position: absolute;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  width: 100%;
-  top: 10%;
   gap: 12px;
+  top: 50px;
 }
 
 /* Estilos para la barra de desplazamiento en navegadores WebKit */
@@ -68,21 +60,5 @@
 }
 
 
-.neon-text {
-  font-size: 5vw; /* Tamaño del texto */
-  font-weight: bold; /* Fuente en negrita */
-  color: #ffffff; /* Color principal del texto */
-  text-transform: uppercase; /* Convertir texto a mayúsculas */
-  text-shadow:
-    0 0 5px #0ff, /* Brillo pequeño */
-    0 0 10px #0ff, /* Brillo más grande */
-    0 0 20px #0ff, /* Brillo más grande */
-    0 0 40px #0ff, /* Luz suave */
-    0 0 80px #0ff, /* Luz extendida */
-    0 0 90px #ff00ff, /* Luz secundaria (rosa) */
-    0 0 100px #ff00ff, /* Luz secundaria más grande */
-    0 0 200px #ff00ff; /* Luz muy extendida */
-  font-family: 'GenericTechno'; /* Fuente tipo retro */
-}
 
 

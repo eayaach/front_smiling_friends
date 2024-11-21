@@ -52,7 +52,7 @@ const Profile = () => {
     };
 
     return (
-        <>
+        <>  <div className='section'>
             {loading ? (<p>Cargando...</p>) : error ? (<p>Hubo un error al cargar los datos.</p>) : (
                 <div className="profile-container">
 
@@ -65,7 +65,7 @@ const Profile = () => {
                         <div className="level-bar">
                             <div className="level-fill" style={{ width: `${progress}%` }}></div>
                         </div>
-                        <button onClick={handleEditProfile} className="boton-editar">
+                        <button onClick={handleEditProfile}>
                             Editar Perfil
                         </button>
                     </div>
@@ -91,6 +91,7 @@ const Profile = () => {
                     </div>
                 </div>
             )}
+            </div>
         </>
     );
 };
