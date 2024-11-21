@@ -14,7 +14,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
+  grid-template-columns: repeat(3, 1fr); /* 4 columnas por defecto */
   gap: 10px; /* Espaciado entre filas y columnas */
   padding: 10px; /* Espaciado interno */
   justify-items: center; /* Centra horizontalmente los elementos */
