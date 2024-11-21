@@ -3,7 +3,9 @@ import './AvailableGames.css';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import axios from 'axios';
 import { SocketContext } from '../contexts/sockets/SocketContext';
-import PartidaWidget from '../gamecomponents/partidawidget'
+import PartidaWidget from '../gamecomponents/partidawidget';
+import {cargar_mapas} from '../common/images'
+
 const fetchGames = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -23,12 +25,21 @@ const fetchGames = async () => {
 function AvailableGames() {
   const [games, setGames] = useState([]); // Partidas
   const [error, setError] = useState(false);
+  const [mapas, setMapas] = useState([]);
   const { token } = useContext(AuthContext);
   const [vacio, setVacio] = useState(false);
   const { socket } = useContext(SocketContext);
   const userId = localStorage.getItem("user_id");
 
   useEffect(() => {
+    async function fetchImages() {
+      var mapas = await cargar_mapas();
+      mapas = Object.keys(mapas).map(clave => ({ [clave]: mapas[clave] }))
+      console.log(mapas);
+      setMapas(mapas);
+    }
+    fetchImages()
+
     const getGames = async () => {
       try {
         const data = await fetchGames();
@@ -77,9 +88,10 @@ function AvailableGames() {
       {games.map(game => (
         <PartidaWidget
           key={game.id}
-          creador={game.id_creador}
+          creador={game.nombre}
           actuales={game.jugadores_actuales}
           max={game.jugadores_max}
+          game_image={mapas[game.map_id]}
         />
       ))}
     </div>
