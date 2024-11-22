@@ -61,7 +61,7 @@ const AdminPanel = () => {
                 </thead>
                 <tbody>
                 {users
-                    .filter(user => user.id !== userId) // Filtra los usuarios con id diferente al guardado en localStorage
+                    .filter(user => user.id !== parseInt(userId, 10)) // Filtra los usuarios con id diferente al guardado en localStorage
                     .map(user => (
                         <tr key={user.id}>
                             <td>{user.usuario}</td>
