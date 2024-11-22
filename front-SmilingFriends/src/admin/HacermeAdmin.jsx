@@ -5,9 +5,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/auth/AuthContext';
 
 const HacermeAdmin = () => {
-    const [adminkey, setAdminkey] = useState(""); 
+    const [adminkey, setAdminkey] = useState("");
     const [error, setError] = useState(null);
-    const { token, setIsAdmin } = useContext(AuthContext);
+    const { token, setIsAdmin , setToken } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleAdminSubmit = (event) => {
@@ -25,6 +25,8 @@ const HacermeAdmin = () => {
             .then(response => {
                 // Aquí actualizamos el estado de isAdmin en el contexto
                 setIsAdmin(true);  // Actualiza el estado en el contexto
+                console.log(response.data);
+                setToken(response.data.access_token);
                 alert("¡Ahora eres un administrador!");
                 navigate('/profile');  // Redirige a la vista de perfil
             })

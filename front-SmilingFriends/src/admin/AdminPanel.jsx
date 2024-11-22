@@ -7,9 +7,7 @@ import './AdminPanel.css';
 const AdminPanel = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
-    const [editingUser, setEditingUser] = useState(null);
-    const [updatedData, setUpdatedData] = useState({});
-    const { token } = useContext(AuthContext);
+    const { token, userId } = useContext(AuthContext);
 
     // Cargar todos los usuarios al iniciar
     useEffect(() => {
@@ -28,38 +26,6 @@ const AdminPanel = () => {
             setError("Hubo un error al cargar los usuarios.");
         });
     }, [token]);
-
-    // Manejar actualizaciones
-    const handleEdit = (user) => {
-        setEditingUser(user.id);
-        setUpdatedData({ ...user });
-    };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setUpdatedData({ ...updatedData, [name]: value });
-    };
-
-    const handleUpdate = (event) => {
-        event.preventDefault();
-
-        axios({
-            method: 'patch',
-            url: `${import.meta.env.VITE_BACKEND_URL}/users/update`,
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            data: updatedData
-        })
-        .then(() => {
-            setUsers(users.map(user => (user.id === updatedData.id ? updatedData : user)));
-            setEditingUser(null);
-        })
-        .catch(error => {
-            console.error("Error al actualizar el usuario:", error);
-            setError("Hubo un error al actualizar el usuario.");
-        });
-    };
 
     // Manejar eliminación
     const handleDelete = (userId) => {
@@ -94,48 +60,18 @@ const AdminPanel = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user => (
+                {users
+                    .filter(user => user.id !== userId) // Filtra los usuarios con id diferente al guardado en localStorage
+                    .map(user => (
                         <tr key={user.id}>
+                            <td>{user.usuario}</td>
+                            <td>{user.correo}</td>
                             <td>
-                                {editingUser === user.id ? (
-                                    <input
-                                        type="text"
-                                        name="usuario"
-                                        value={updatedData.usuario || ''}
-                                        onChange={handleChange}
-                                    />
-                                ) : (
-                                    user.usuario
-                                )}
-                            </td>
-                            <td>
-                                {editingUser === user.id ? (
-                                    <input
-                                        type="email"
-                                        name="correo"
-                                        value={updatedData.correo || ''}
-                                        onChange={handleChange}
-                                    />
-                                ) : (
-                                    user.correo
-                                )}
-                            </td>
-                            <td>
-                                {editingUser === user.id ? (
-                                    <>
-                                        <button onClick={handleUpdate}>Guardar</button>
-                                        <button onClick={() => setEditingUser(null)}>Cancelar</button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <button onClick={() => handleEdit(user)}>Editar</button>
-                                        <button onClick={() => handleDelete(user.id)}>Eliminar</button>
-                                    </>
-                                )}
+                                <button onClick={() => handleDelete(user.id)}>Eliminar</button>
                             </td>
                         </tr>
                     ))}
-                </tbody>
+            </tbody>
             </table>
         </div>
     );
