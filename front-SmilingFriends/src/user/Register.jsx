@@ -15,10 +15,30 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [msg, setMsg] = useState("");
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!name || name.length < 3 || name.length > 50) {
+            newErrors.name = "El nombre debe tener entre 3 y 50 caracteres.";
+        }
+
+        if (!username || username.length < 3 || username.length > 30) {
+            newErrors.username = "El usuario debe tener entre 3 y 30 caracteres.";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0; // retorna true si no hay errores
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!validateForm()) {
+            setError(true);
+            return;
+        }
 
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
             usuario: username,
@@ -65,6 +85,7 @@ export default function Register() {
                 onChange={e => setName(e.target.value)}
                 required
               placeholder='Name'/>
+              {errors.name && <div className="error">{errors.name}</div>}
             </label>
             <label>
               <input
@@ -74,6 +95,7 @@ export default function Register() {
                 onChange={e => setUsername(e.target.value)}
                 required
                 placeholder='Username'/>
+              {errors.username && <div className="error">{errors.username}</div>}
             </label>
             <label>
               <input

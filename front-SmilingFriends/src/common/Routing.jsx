@@ -15,6 +15,8 @@ import Home from '../home/Home'
 import AvailableGames from '../game/AvailableGames'
 import CreateGames from '../game/CreateGames'
 import WaitingRoom from '../game/WaitingRoom'
+import AdminPanel from '../admin/AdminPanel'
+import HacermeAdmin from '../admin/HacermeAdmin'
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div``
 
@@ -34,6 +36,8 @@ function Routing(){
                 <Route path={"/available_games"} element={<AvailableGames />}/>
                 <Route path={"/create_games"} element={<CreateGames/>}/>
                 <Route path={"/waiting_room/:id"} element={<WaitingRoom/>}/>
+                <Route path={"/admin_panel"} element={<AdminPanel/>}/>
+                <Route path={"/make_admin"} element={<HacermeAdmin/>}/>
               </Routes>
             <img src={enanoImg} className="enano" alt="Enano" />
         </BrowserRouter>
