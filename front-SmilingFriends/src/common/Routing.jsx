@@ -17,6 +17,7 @@ import CreateGames from '../game/CreateGames'
 import WaitingRoom from '../game/WaitingRoom'
 import AdminPanel from '../admin/AdminPanel'
 import HacermeAdmin from '../admin/HacermeAdmin'
+import InGame from '../game/InGame'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../contexts/auth/AuthContext';
 import { useEffect } from 'react'
@@ -42,6 +43,7 @@ function Routing(){
                 <Route path={"/waiting_room/:id"} element={<WaitingRoom/>}/>
                 <Route path={"/admin_panel"} element={<AdminPanel/>}/>
                 <Route path={"/make_admin"} element={<HacermeAdmin/>}/>
+                <Route path={"/ingame"} element={<InGame/>}/>
               </Routes>
             <img src={enanoImg} className="enano" alt="Enano" />
         </BrowserRouter>
