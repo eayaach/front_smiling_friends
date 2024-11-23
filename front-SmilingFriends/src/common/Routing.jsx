@@ -17,6 +17,10 @@ import CreateGames from '../game/CreateGames'
 import WaitingRoom from '../game/WaitingRoom'
 import AdminPanel from '../admin/AdminPanel'
 import HacermeAdmin from '../admin/HacermeAdmin'
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../contexts/auth/AuthContext';
+import { useEffect } from 'react'
+
 // Contenedor principal que usa Flexbox
 const MainContainer = styled.div``
 

@@ -16,4 +16,4 @@ const UserComponent = ({Skin1, usuario, level, showButton}) => {
     );
 };
 
-export default Profile;
+export default UserComponent;
