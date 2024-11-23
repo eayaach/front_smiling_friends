@@ -61,11 +61,12 @@ function AvailableGames() {
 
   useEffect(() => {
     console.log("antes de entrar al socket");
-    if (!socket) return;
+    if (!socket?.current) return;
     console.log("entrando al socket");
     const handleGameUpdate = (data) => {
       setGames(data.partidas);
       setVacio(data.vacio);
+      console.log("esto recibi: ", data)
     };
 
     socket.current?.on('PartidasUpdated', handleGameUpdate);
@@ -75,11 +76,6 @@ function AvailableGames() {
     };
   }, [socket.current]);
 
-
-  const joinGame = (gameId) => {
-    console.log(`Unirse a la partida con ID: ${gameId}`);
-  };
-  console.log(games);
   return (
     <div className='section'>
       <h1>Partidas Disponibles</h1>
@@ -87,6 +83,7 @@ function AvailableGames() {
     <div className="grid">
       {games.map(game => (
         <PartidaWidget
+          game_id = {game.id}
           key={game.id}
           creador={game.nombre}
           actuales={game.jugadores_actuales}
