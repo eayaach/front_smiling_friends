@@ -73,7 +73,7 @@ export default function WaitingRoom() {
     console.log("entrando al socket");
 
     const handleChangeOfview = (data) => {
-      navigate('/partidas/ingame');
+      navigate('/ingame');
     };
 
     socket.current?.on('PartidaStarts', handleChangeOfview);
