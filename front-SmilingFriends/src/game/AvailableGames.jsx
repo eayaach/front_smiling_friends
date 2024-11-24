@@ -8,7 +8,7 @@ import {cargar_mapas} from '../common/images'
 
 const fetchGames = async () => {
   try {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/partidas/all`, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -29,7 +29,7 @@ function AvailableGames() {
   const { token } = useContext(AuthContext);
   const [vacio, setVacio] = useState(false);
   const { socket } = useContext(SocketContext);
-  const userId = localStorage.getItem("user_id");
+  const userId = sessionStorage.getItem("user_id");
 
   useEffect(() => {
     async function fetchImages() {
@@ -44,14 +44,14 @@ function AvailableGames() {
         const data = await fetchGames();
         setGames(data.partidas);
         setVacio(data.vacio);
-        socket.current?.emit("UsuarioEntraPartidas", {UserId: localStorage.getItem("user_id")});
+        socket.current?.emit("UsuarioEntraPartidas", {UserId: sessionStorage.getItem("user_id")});
       } catch (error) {
         setError(true);
       }
     };
     getGames();
     return () => {
-      socket.current?.emit('UsuarioSalePartidas', { message: 'Usuario ha salido de la vista de partidas', UserId: localStorage.getItem("user_id")});
+      socket.current?.emit('UsuarioSalePartidas', { message: 'Usuario ha salido de la vista de partidas', UserId: sessionStorage.getItem("user_id")});
     }
 
   }, []);

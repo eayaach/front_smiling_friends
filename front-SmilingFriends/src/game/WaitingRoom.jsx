@@ -16,13 +16,13 @@ export default function WaitingRoom() {
   const [loading, setLoading] = useState(true); // Estado para indicar si está cargando
   const [error, setError] = useState(null); // Estado para manejar errores
   const [skins, setSkins] = useState({});
-  const userId = localStorage.getItem("user_id");
+  const userId = sessionStorage.getItem("user_id");
   const navigate = useNavigate()
   const handleGamestart = async () => {
     try {
 
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/partidas/start`, {id_partida: localStorage.getItem("game_id")},
+        `${import.meta.env.VITE_BACKEND_URL}/partidas/start`, {id_partida: sessionStorage.getItem("game_id")},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ export default function WaitingRoom() {
     } catch (err) {
       console.log(err);
       setError(err.response?.data?.msg || 'Error al intentar iniciar partida');
-    } 
+    }
 
   }
   useEffect(() => {
@@ -41,13 +41,14 @@ export default function WaitingRoom() {
       const skins = await cargar_skins();
       setSkins(skins);
     }
-    fetchImages()
+
     const fetchGameData = async () => {
       try {
-        const data = {id_partida: parseInt(id, 10)};
-        const token = localStorage.getItem("token");
+        const data = { id_partida: parseInt(id, 10) };
+        const token = sessionStorage.getItem("token");
         const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/partidas/show`, data,
+          `${import.meta.env.VITE_BACKEND_URL}/partidas/show`,
+          data,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Enviar token en el header
@@ -58,20 +59,34 @@ export default function WaitingRoom() {
         console.log(response.data);
       } catch (err) {
         console.log(err);
-        setError(err.response?.data?.msg || 'Error al cargar los datos');
+        setError(err.response?.data?.msg || "Error al cargar los datos");
       } finally {
         setLoading(false); // Terminar la carga
       }
     };
 
-    fetchGameData();
-  }, [id]); // Ejecutar el efecto cuando cambie el ID
+    fetchImages(); // Cargar skins inicialmente
+    fetchGameData(); // Cargar datos del juego inicialmente
+
+    if (!socket?.current) return;
+
+    // Manejar eventos del socket
+    const handleNewJoin = () => {
+      fetchGameData(); // Volver a cargar los datos del juego al recibir un evento
+    };
+
+    socket.current?.on("UserJoined", handleNewJoin);
+
+    return () => {
+      socket.current?.off("UserJoined", handleNewJoin);
+    };
+  }, [id, socket.current]); // Ejecutar el efecto cuando cambie el ID
 
   useEffect(() => {
     if (!socket?.current) return;
 
     const handleGameStart = (data) => {
-      localStorage.setItem('Partida', JSON.stringify(data));
+      sessionStorage.setItem('Partida', JSON.stringify(data));
       navigate('/ingame');
     };
 
@@ -81,6 +96,9 @@ export default function WaitingRoom() {
       socket.current?.off('PartidaStarts', handleGameStart);
     };
   }, [socket.current]);
+
+
+
 
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;

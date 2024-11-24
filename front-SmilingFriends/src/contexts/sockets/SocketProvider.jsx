@@ -6,7 +6,7 @@ const SocketProvider = ({children}) => {
     const socket = useRef();
 
     const connectSocket = (userId) => {
-        const storedUserId = userId || localStorage.getItem("user_id");
+        const storedUserId = userId || sessionStorage.getItem("user_id");
         if (storedUserId) {
             socket.current = io(`${import.meta.env.VITE_BACKEND_URL}`, {
                 reconnection: true,
@@ -23,7 +23,7 @@ const SocketProvider = ({children}) => {
     };
 
     useEffect(() => {
-        const storedUserId = localStorage.getItem("user_id");
+        const storedUserId = sessionStorage.getItem("user_id");
         if (storedUserId) connectSocket(storedUserId);
     }, []);
 

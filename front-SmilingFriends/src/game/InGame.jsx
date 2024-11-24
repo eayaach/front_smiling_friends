@@ -12,7 +12,7 @@ function InGame() {
   const [cartas, setCartas] = useState([]);
   const { token } = useContext(AuthContext);
   const { socket } = useContext(SocketContext);
-  const userId = localStorage.getItem("user_id");
+  const userId = sessionStorage.getItem("user_id");
 
   useEffect(() => {
     async function fetchImages() {
@@ -24,7 +24,7 @@ function InGame() {
     fetchImages();
 
     async function fetchGameData() {
-      const partida = JSON.parse(localStorage.getItem('Partida'))
+      const partida = JSON.parse(sessionStorage.getItem('Partida'))
       setGameInfo(partida);
       console.log(partida);
     }
@@ -35,7 +35,7 @@ function InGame() {
   return (
     <div className='section'>
       <TableroWidget tablero={gameInfo.tablero} imagenes={cartas} />
-    </div> 
+    </div>
   );
 }
 
