@@ -6,12 +6,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SocketContext } from '../contexts/sockets/SocketContext';
 
 export default function CreateGames() {
-  const token = localStorage.getItem('token');
+  const { token, setToken } = useContext(AuthContext);
   const [error, setError] = useState(false);
   const [msg, setMsg] = useState("");
   const [jugadores_max, setJugadores] = useState(4);
   const { gameId, setGameId } = useContext(AuthContext);
-  const user_id = localStorage.getItem('user_id');
+  const user_id = sessionStorage.getItem('user_id');
   const navigate = useNavigate();
   const increment = () => {
 
@@ -46,7 +46,7 @@ export default function CreateGames() {
       // rtidaResponse);
       const partidaId = partidaResponse.data.id; // Guardamos el ID en una variable local
       await setGameId(partidaId);
- 
+
 
       // Crear la solicitud para unir al creador
       await axios.post(

@@ -26,8 +26,8 @@ const CustomBackground = styled.div`
 
 function PartidaWidget({creador, actuales, max, id, game_image, game_id}) {
     const navigate = useNavigate();
-    const userId = localStorage.getItem("user_id");
-    const token = localStorage.getItem("token");
+    const userId = sessionStorage.getItem("user_id");
+    const token = sessionStorage.getItem("token");
     const { gameId, setGameId } = useContext(AuthContext);
     const handleUserJoin = async () => {
       try {

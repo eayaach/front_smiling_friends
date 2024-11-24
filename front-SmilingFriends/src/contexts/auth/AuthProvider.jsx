@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 function AuthProvider({ children }) {
-    const initialToken = localStorage.getItem('token');
+    const initialToken = sessionStorage.getItem('token');
     const [token, setToken] = useState(initialToken !== "null" && initialToken !== null ? initialToken : null);
     const [isOnline, setIsOnline] = useState(!!initialToken && initialToken !== "null");
-    const [userId, setUserId] = useState(localStorage.getItem('user_id') || null);
-    const [gameId, setGameId] = useState(localStorage.getItem('game_id') || null);
-    const [isAdmin, setIsAdmin] = useState(localStorage.getItem('is_admin') === 'true' || false);
-    const [game_status, setGameStatus] = useState(localStorage.getItem('game_status') || null);
+    const [userId, setUserId] = useState(sessionStorage.getItem('user_id') || null);
+    const [gameId, setGameId] = useState(sessionStorage.getItem('game_id') || null);
+    const [isAdmin, setIsAdmin] = useState(sessionStorage.getItem('is_admin') === 'true' || false);
+    const [game_status, setGameStatus] = useState(sessionStorage.getItem('game_status') || null);
 
     function logout() {
         setToken(null);
@@ -18,29 +18,29 @@ function AuthProvider({ children }) {
         setIsAdmin(false);
         setGameStatus(null);
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('user_id');
-        localStorage.removeItem('game_id');
-        localStorage.removeItem('is_admin');
-        localStorage.removeItem('game_status');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user_id');
+        sessionStorage.removeItem('game_id');
+        sessionStorage.removeItem('is_admin');
+        sessionStorage.removeItem('game_status');
     }
 
     useEffect(() => {
-        // Almacena el token en localStorage y actualiza isOnline según el valor de token
+        // Almacena el token en sessionStorage y actualiza isOnline según el valor de token
         if (token) {
-            localStorage.setItem('token', token);
+            sessionStorage.setItem('token', token);
             setIsOnline(true);
         } else {
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
             setIsOnline(false);
         }
     }, [token]);
 
     useEffect(() => {
-        localStorage.setItem('user_id', userId);
-        localStorage.setItem('game_id', gameId);
-        localStorage.setItem('is_admin', isAdmin);
-        localStorage.setItem('game_status', game_status);
+        sessionStorage.setItem('user_id', userId);
+        sessionStorage.setItem('game_id', gameId);
+        sessionStorage.setItem('is_admin', isAdmin);
+        sessionStorage.setItem('game_status', game_status);
     }, [userId, gameId, isAdmin, game_status]);
 
 
