@@ -2,53 +2,48 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TableroContainer = styled.div`
+  position: fixed;
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 columnas */
   grid-template-rows: repeat(5, 1fr);   /* 5 filas */
-  gap: 10px;
+  top: 8%;
+  left: 18%;
   padding: 20px;
 `;
 
 const CeldaConImagen = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  width: 85px;
+  height: 110px;
+  background-color: rgba(0,0,0, 0.2)
 `;
 
-const CeldaPlaceholder = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-`;
 
-function TableroWidget({ tablero, imagenes }) {
+function TableroWidget({ tablero = [], imagenes = {} }) {
+  if (!Array.isArray(tablero) || !tablero.every(row => Array.isArray(row))) {
+    console.error('Tablero inválido. Debe ser un array de arrays.');
+    return <div>Error: Formato de tablero inválido.</div>;
+  }
+
   return (
-      <TableroContainer>
-        {tablero.map((fila, filaIndex) =>
-          fila.map((celda, celdaIndex) => {
-            let imageSrc = imagenes[celda];
-            return imageSrc ? (
-              <CeldaConImagen
-                key={`${filaIndex}-${celdaIndex}`}
-                src={imageSrc}
-                alt={`Celda ${filaIndex}-${celdaIndex}`}
-              />
-            ) : (
-              <CeldaPlaceholder key={`${filaIndex}-${celdaIndex}`}>
-                Sin Imagen
-              </CeldaPlaceholder>
-            );
-          })
-        )}
-      </TableroContainer>
+    <TableroContainer>
+      {tablero.map((fila, filaIndex) =>
+        fila.map((celda, celdaIndex) => {
+          const claveUnica = `${filaIndex}-${celdaIndex}-${celda ?? 'empty'}`;
+          const imageSrc = imagenes[celda];
+          console.log(celda);
+          return imageSrc ? (
+            <CeldaConImagen
+              key={claveUnica}
+              src={imageSrc}
+              alt={`Celda ${filaIndex}-${celdaIndex}`}
+            />
+          ) : (
+            <CeldaConImagen key={claveUnica}>
+            </CeldaConImagen>
+          );
+        })
+      )}
+    </TableroContainer>
   );
 }
 

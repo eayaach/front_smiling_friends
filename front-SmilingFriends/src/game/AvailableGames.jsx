@@ -35,7 +35,6 @@ function AvailableGames() {
     async function fetchImages() {
       var mapas = await cargar_mapas();
       mapas = Object.keys(mapas).map(clave => ({ [clave]: mapas[clave] }))
-      console.log(mapas);
       setMapas(mapas);
     }
     fetchImages()
@@ -46,7 +45,6 @@ function AvailableGames() {
         setGames(data.partidas);
         setVacio(data.vacio);
         socket.current?.emit("UsuarioEntraPartidas", {UserId: localStorage.getItem("user_id")});
-        console.log(games);
       } catch (error) {
         setError(true);
       }
@@ -54,19 +52,15 @@ function AvailableGames() {
     getGames();
     return () => {
       socket.current?.emit('UsuarioSalePartidas', { message: 'Usuario ha salido de la vista de partidas', UserId: localStorage.getItem("user_id")});
-      console.log("saliendo de la vista");
     }
 
   }, []);
 
   useEffect(() => {
-    console.log("antes de entrar al socket");
     if (!socket?.current) return;
-    console.log("entrando al socket");
     const handleGameUpdate = (data) => {
       setGames(data.partidas);
       setVacio(data.vacio);
-      console.log("esto recibi: ", data)
     };
 
     socket.current?.on('PartidasUpdated', handleGameUpdate);

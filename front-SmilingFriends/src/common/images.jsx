@@ -6,7 +6,7 @@ async function cargar_cartas() {
     const image_dir = {}
     for (const path in cartas) {
         const imageName = path.match(/(\d+).png$/)[1]; // Extrae el número de la imagen
-        console.log(imageName);
+        
         const imageModule = await cartas[path];  // Carga la imagen
         image_dir[imageName] = imageModule; // Asigna la imagen al objeto images
     }
@@ -17,7 +17,7 @@ async function cargar_mapas() {
     const image_dir = {}
     for (const path in mapas) {
         const imageName = path.match(/(\d+).jpg$/)[1]; // Extrae el número de la imagen
-        console.log(imageName);
+        
         const imageModule = await mapas[path];  // Carga la imagen
         image_dir[imageName] = imageModule; // Asigna la imagen al objeto images
     }
@@ -28,7 +28,7 @@ async function cargar_skins() {
     const image_dir = {}
     for (const path in skins) {
         const imageName = path.match(/(\d+).jpg$/)[1]; // Extrae el número de la imagen
-        console.log(imageName);
+        
         const imageModule = await skins[path];  // Carga la imagen
         image_dir[imageName] = imageModule; // Asigna la imagen al objeto images
     }
