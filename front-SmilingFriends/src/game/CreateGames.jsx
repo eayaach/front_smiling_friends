@@ -43,12 +43,10 @@ export default function CreateGames() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // console.log(partidaResponse);
+      // rtidaResponse);
       const partidaId = partidaResponse.data.id; // Guardamos el ID en una variable local
       await setGameId(partidaId);
-      console.log(gameId);
-
-      console.log("Se creó la partida con éxito");
+ 
 
       // Crear la solicitud para unir al creador
       await axios.post(
@@ -57,7 +55,7 @@ export default function CreateGames() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // console.log("El jugador se unió a la partida con éxito");
+      // l jugador se unió a la partida con éxito");
       // Redirigimos a la sala de espera
       navigate(`/waiting_room/${partidaId}`);
     } catch (error) {

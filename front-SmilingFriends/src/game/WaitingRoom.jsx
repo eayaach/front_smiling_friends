@@ -68,18 +68,17 @@ export default function WaitingRoom() {
   }, [id]); // Ejecutar el efecto cuando cambie el ID
 
   useEffect(() => {
-    console.log("antes de entrar al socket");
     if (!socket?.current) return;
-    console.log("entrando al socket");
 
-    const handleChangeOfview = (data) => {
+    const handleGameStart = (data) => {
+      localStorage.setItem('Partida', JSON.stringify(data));
       navigate('/ingame');
     };
 
-    socket.current?.on('PartidaStarts', handleChangeOfview);
+    socket.current?.on('PartidaStarts', handleGameStart);
 
     return () => {
-      socket.current?.off('PartidaStarts', handleChangeOfview);
+      socket.current?.off('PartidaStarts', handleGameStart);
     };
   }, [socket.current]);
 

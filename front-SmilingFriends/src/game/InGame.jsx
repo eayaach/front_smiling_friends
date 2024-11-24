@@ -17,35 +17,25 @@ function InGame() {
   useEffect(() => {
     async function fetchImages() {
       var cartas = await cargar_cartas();
-      cartas = Object.keys(cartas).map(clave => ({ [clave]: cartas[clave] }))
-      console.log(cartas);
+      cartas = Object.keys(cartas).map(clave => ( cartas[clave]))
       setCartas(cartas);
+      console.log(cartas);
     }
     fetchImages();
 
+    async function fetchGameData() {
+      const partida = JSON.parse(localStorage.getItem('Partida'))
+      setGameInfo(partida);
+      console.log(partida);
+    }
+    fetchGameData();
+
     }, []);
 
-  useEffect(() => {
-    console.log("antes de entrar al socket");
-    if (!socket?.current) return;
-    console.log("entrando al socket");
-    const handleGameUpdate = (data) => {
-      setGameInfo(data);
-      console.log("esto recibi: ", data)
-    };
-
-    socket.current?.on('PartidaInfo', handleGameUpdate);
-
-    return () => {
-      socket.current?.off('PartidaInfo', handleGameUpdate);
-    };
-  }, [socket.current]);
-
   return (
-    <div>
-        hola
-      {/* <TableroWidget tablero={gameInfo.tablero} imagenes={cartas} /> */}
-    </div>
+    <div className='section'>
+      <TableroWidget tablero={gameInfo.tablero} imagenes={cartas} />
+    </div> 
   );
 }
 
