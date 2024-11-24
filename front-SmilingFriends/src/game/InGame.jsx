@@ -5,6 +5,7 @@ import { SocketContext } from '../contexts/sockets/SocketContext';
 import PartidaWidget from '../gamecomponents/partidawidget';
 import {cargar_cartas} from '../common/images'
 import { TableroWidget } from '../gamecomponents/Tablero';
+import PlayerCards  from '../gamecomponents/PlayerCards';
 
 function InGame() {
   const [gameInfo, setGameInfo] = useState({}); // Partidas
@@ -12,6 +13,7 @@ function InGame() {
   const [cartas, setCartas] = useState([]);
   const { token } = useContext(AuthContext);
   const { socket } = useContext(SocketContext);
+  const [selectedCard, SetSelectedCard] = useState(null); // esta prop la gatilla el jugador en el playerCards
   const userId = sessionStorage.getItem("user_id");
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function InGame() {
   return (
     <div className='section'>
       <TableroWidget tablero={gameInfo.tablero} imagenes={cartas} />
+      <PlayerCards value={selectedCard} cartas={gameInfo.cartas} imagenes={cartas} setter={SetSelectedCard}></PlayerCards>
     </div>
   );
 }
