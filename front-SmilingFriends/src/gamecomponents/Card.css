@@ -6,8 +6,6 @@
 }
 
 .glowing-power {
-    width: 150px;
-    height: 150px;
     opacity: 0; /* Comienza invisible */
     mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%); /* Máscara que revela la imagen de abajo hacia arriba */
     mask-size: 100% 200%; /* Aumenta el área visible de la imagen */

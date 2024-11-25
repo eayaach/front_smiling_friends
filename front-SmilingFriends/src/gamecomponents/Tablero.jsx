@@ -4,19 +4,17 @@ import './Card'
 
 // Styled container for the board
 const TableroContainer = styled.div`
-  position: fixed;
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 columns */
   grid-template-rows: repeat(5, 1fr);    /* 5 rows */
-  top: 23%;
-  right: 37%;
   padding: 20px;
 `;
 
 // Styled image for each cell
 const CeldaConImagen = styled.img`
-  width: 85px;
-  height: 110px;
+  width: 4.5vw;
+  min-width:50px;
+  aspect-ratio: 2/ 3; /* Relación de aspecto fija (ancho:alto) */
   background-color: rgba(0,0,0, 0.2);
   cursor: pointer;
 `;

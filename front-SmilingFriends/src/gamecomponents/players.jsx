@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
-
+import { GiOldLantern, GiMineWagon,  GiWarPick} from "react-icons/gi";
 const ContenedorJugadores = styled.div`
   position: fixed;
   left: -1%;
@@ -27,12 +27,33 @@ const Avatar= styled.div`
 
 const Jugador = styled.div`
   display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+`;
+const JugadorWrapper = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100px;
+`
+const IconosWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 25px; /* Aumenta el tamaño de los íconos */
+    height: 25px;
+    color: red; /* Cambia el color según sea necesario */
+  }
 `;
 
 const NombreJugador = styled.span`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
   font-weight: bold;
 `;
@@ -45,8 +66,15 @@ function Players({ jugadores, imagenes, userId}) {
         console.log(jugador.id);
         return (userId != jugador.id) && (
           <Jugador key={index}>
-            <Avatar> <img src={imageSrc} /></Avatar>
-            <NombreJugador>{jugador.usuario}</NombreJugador>
+            <JugadorWrapper>
+              <Avatar> <img src={imageSrc} /></Avatar>
+              <NombreJugador>{jugador.usuario}</NombreJugador>
+            </JugadorWrapper>
+            <IconosWrapper>
+              <GiOldLantern />
+              <GiMineWagon />
+              <GiWarPick/>
+            </IconosWrapper>
           </Jugador>
         );
       })}

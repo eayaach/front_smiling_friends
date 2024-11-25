@@ -12,20 +12,15 @@ import axios from 'axios';
 import MessageBox from './MessageBox';
 
 const Round = styled.div`
-  width: auto;
-  height: 70px;
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
   border: 2px solid rgba(0, 255, 255, 0.8); /* Crea un borde brillante */
   border-radius: 15px; /* Esquinas redondeadas */
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
               0 0 30px rgba(0, 255, 255, 0.3); /* Sombra con brillo */
   display: flex;
-  padding: 1%;
+  padding: 10px;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 20%;
-  left: 40%;
   color: white;
   font-size: 0.8em;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.8),

@@ -1,4 +1,41 @@
 import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
+
+
+const Round = styled.div`
+  position: fixed;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Crea un borde brillante */
+  border-radius: 15px; /* Esquinas redondeadas */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
+              0 0 30px rgba(0, 255, 255, 0.3); /* Sombra con brillo */
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 10px;
+  width: 20wv;
+  height: 5vh;
+  font-size: 0.8em;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8),
+               0 0 10px rgba(0, 255, 255, 0.6); /* Brillo en el texto */
+  animation: glow 1.5s infinite alternate; /* Animación para brillo */
+  @keyframes glow {
+  from {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
+                0 0 30px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8),
+                0 0 50px rgba(0, 255, 255, 0.5);
+     }
+  }
+  right: -0.5%;
+  top: 20%;
+`;
+
+
 
 function MessageBox({ msg, mazo }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,42 +51,10 @@ function MessageBox({ msg, mazo }) {
   }, [msg]); // Ejecutar cada vez que `msg` cambie
 
   return (
-      <div style={styles.messageBox}>
+    <Round>
         {isVisible? (msg) : (`Cartas restantes ${mazo}`)}
-      <div style={styles.bubbleArrow}></div> {/* Triángulo inferior */}
-    </div>
+    </Round>
   );
 }
-
-const styles = {
-  messageBox: {
-    position: "absolute", // Corregir el typo
-    top: "55vh",
-    left: "8vw",
-    display: "inline-block",
-    maxWidth: "250px", // Ancho máximo del mensaje
-    minWidth: "200px",
-    minHeight: "50px", // Ajustar el tamaño mínimo
-    padding: "15px 20px",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    color: "white",
-    borderRadius: "25px", // Bordes redondeados para el efecto de burbuja
-    border: "2px solid black", // Borde negro para el contorno
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para el efecto flotante
-    textAlign: "center",
-  },
-  bubbleArrow: {
-    position: "absolute", // Asegurar que sea absoluto
-    bottom: "-20px", // Posicionar debajo del box
-    left: "10%", // Centrar horizontalmente
-    width: "0",
-    height: "0",
-    borderStyle: "solid",
-    borderWidth: "20px 20px 0 20px", // Triángulo equilátero
-    borderColor: "black transparent transparent transparent", // Color del triángulo
-  },
-};
-
-
 
 export default MessageBox;

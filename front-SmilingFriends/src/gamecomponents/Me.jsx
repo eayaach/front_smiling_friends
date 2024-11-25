@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { GiOldLantern, GiMineWagon,  GiWarPick} from "react-icons/gi";
 
 const ContenedorMe = styled.div`
   position: fixed;
   right: -1%;
-  top: 40%;
+  top: 35%;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -42,9 +43,23 @@ const Saboteur = styled.span`
   font-weight: bold;
 `;
 
+const IconosWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 25px; /* Aumenta el tamaño de los íconos */
+    height: 25px;
+    color: red; /* Cambia el color según sea necesario */
+  }
+`;
+
+
 function Me({ jugadores, imagenes, userId, is_evil}) {
   return (
-    <ContenedorMe>
+      <ContenedorMe>
       {jugadores.map((jugador, index) => {
         const imageSrc = imagenes[jugador.id_skin];
         console.log(jugador.id);
@@ -56,7 +71,12 @@ function Me({ jugadores, imagenes, userId, is_evil}) {
           </Jugador>
         );
       })}
-    </ContenedorMe>
+      <IconosWrapper>
+        <GiOldLantern />
+        <GiMineWagon />
+        <GiWarPick/>
+      </IconosWrapper>
+      </ContenedorMe>
   );
 }
 
