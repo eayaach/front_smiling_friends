@@ -8,7 +8,7 @@ const ContenedorCartas = styled.div`
   display: flex;
   flex-direction: row;
   height: auto;
-  top: 75%;
+  bottom: -1%;
   right: -1%;
   gap: 10px;
   padding: 2%;
