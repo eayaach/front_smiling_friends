@@ -8,7 +8,7 @@ const TableroContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 columns */
   grid-template-rows: repeat(5, 1fr);    /* 5 rows */
-  top: 8%;
+  top: 23%;
   right: 37%;
   padding: 20px;
 `;
@@ -22,7 +22,7 @@ const CeldaConImagen = styled.img`
 `;
 
 function TableroWidget({ tablero = [], imagenes = {}, onCellClick }) {
-  
+
   if (!Array.isArray(tablero) || !tablero.every(row => Array.isArray(row))) {
     console.error('Tablero inválido. Debe ser un array de arrays.');
     return <div>Error: Formato de tablero inválido.</div>;
@@ -49,7 +49,7 @@ function TableroWidget({ tablero = [], imagenes = {}, onCellClick }) {
               src={imageSrc}
               alt={`Celda ${filaIndex}-${celdaIndex}`}
               className='glowing-power'
-              onClick={() => handleCellClick(filaIndex, celdaIndex)} 
+              onClick={() => handleCellClick(filaIndex, celdaIndex)}
             />
             </div>
           ) : (

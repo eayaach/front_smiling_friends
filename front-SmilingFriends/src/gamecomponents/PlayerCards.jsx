@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 
@@ -28,8 +28,10 @@ function PlayerCards({ cartas = [], imagenes = {}, value, setter }) {
   const handleChange = (indice) => {
     const cartaSeleccionada = cartas[indice];  // Get the selected card data
     console.log(`Carta seleccionada: índice ${indice}, datos:`, cartaSeleccionada);
-    setter(cartaSeleccionada);  // Update the parent state with the selected card
+    setter([cartaSeleccionada, indice]);  // ajustamos esto para que guarde indice tambien par apoder hacer las consultas
   };
+
+
 
   return (
     <ContenedorCartas>
