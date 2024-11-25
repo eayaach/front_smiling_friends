@@ -9,12 +9,16 @@ const ContenedorCartas = styled.div`
   flex-direction: row;
   height: auto;
   top: 75%;
-  right: 0%;
+  right: -1%;
   gap: 10px;
   padding: 2%;
   border-radius: 10px;
   border: 2px solid #ffffff;
   backdrop-filter: blur(5px);
+  :hover {
+      color:  #00FFFF;
+      filter: drop-shadow(0 0 1em #00FFFF);
+    }
 `;
 
 

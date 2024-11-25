@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import './Card.css'
 // Cambiar CardBox a un div
 const CardBox = styled.div`
   width: 100px;
@@ -9,6 +9,7 @@ const CardBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+}
 `;
 
 
@@ -22,8 +23,8 @@ function Card({ indice, imagen }) {
   }, [currentImg, currentIndice]);
   console.log(currentImg);
   return (
-    <CardBox>
-      <img src={imagen} alt={currentIndice} style={{ width: '100%', height: '100%' }} />
+    <CardBox className='glowing-wrapper'>
+      <img src={imagen} alt={currentIndice} style={{ width: '100%', height: '100%' }} className='glowing-power'/>
     </CardBox>
   );
 }

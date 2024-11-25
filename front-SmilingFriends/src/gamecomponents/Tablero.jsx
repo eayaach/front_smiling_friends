@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import './Card'
 
 const TableroContainer = styled.div`
   position: fixed;
@@ -7,7 +8,7 @@ const TableroContainer = styled.div`
   grid-template-columns: repeat(7, 1fr); /* 7 columnas */
   grid-template-rows: repeat(5, 1fr);   /* 5 filas */
   top: 8%;
-  right: 32%;
+  right: 37%;
   padding: 20px;
 `;
 
@@ -32,11 +33,14 @@ function TableroWidget({ tablero = [], imagenes = {} }) {
           const imageSrc = imagenes[celda];
           console.log(celda);
           return imageSrc ? (
+            <div className='glowing-wrapper'>
             <CeldaConImagen
               key={claveUnica}
               src={imageSrc}
               alt={`Celda ${filaIndex}-${celdaIndex}`}
+              className='glowing-power'
             />
+            </div>
           ) : (
             <CeldaConImagen key={claveUnica}>
             </CeldaConImagen>

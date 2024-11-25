@@ -9,13 +9,13 @@
     margin-right: 25%;
 }
 
-/* User Avatar Section */
 .user-info {
     position: relative;
     text-align: center;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 12px;
+    gap:10px;
     padding: 5%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
@@ -28,10 +28,14 @@
 }
 
 .user-info h2 {
-    font-size: 2vw;
+    font-size: 32px; /* Usa un tamaño consistente */
     color: white;
-
+    width: 180px; /* Fija un ancho para el texto */
+    margin: 0 auto; /* Centra el texto dentro del ancho fijo */
+    text-align: center; /* Asegura que el texto esté alineado */
+    word-wrap: break-word; /* Permite el ajuste de palabras largas */
 }
+
 
 .section-header {
     font-size: 1.2em;

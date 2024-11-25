@@ -4,7 +4,7 @@ import Card from './Card';
 
 const ContenedorJugadores = styled.div`
   position: fixed;
-  left: 10%;
+  left: -1%;
   top: 12%;
   display: flex;
   flex-direction: column;
