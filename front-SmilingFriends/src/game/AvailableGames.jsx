@@ -34,8 +34,9 @@ function AvailableGames() {
   useEffect(() => {
     async function fetchImages() {
       var mapas = await cargar_mapas();
-      mapas = Object.keys(mapas).map(clave => ({ [clave]: mapas[clave] }))
+      mapas = Object.keys(mapas).map(clave => (mapas[clave]))
       setMapas(mapas);
+      console.log(mapas)
     }
     fetchImages()
 
@@ -43,6 +44,7 @@ function AvailableGames() {
       try {
         const data = await fetchGames();
         setGames(data.partidas);
+        console.log(data);
         setVacio(data.vacio);
         socket.current?.emit("UsuarioEntraPartidas", {UserId: sessionStorage.getItem("user_id")});
       } catch (error) {

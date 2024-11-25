@@ -13,10 +13,14 @@ function App() {
     <section className='main'>
       <div className="neon-text">Saboteur</div>
       <div className='button-container'>
+        <div>
         <button className="startButtons" onClick={() => navigate('/create_games')}>START</button>
         <button className="startButtons" onClick={() => navigate('/available_games')}>JOIN</button>
-        {isOnline && isAdmin && <button className="startButtons" onClick={() => navigate('/admin_panel')}>ADMIN PANEL</button>}
-        {isOnline && <button className="startButtons" onClick={() => navigate('/make_admin')}>MAKE ADMIN</button>}
+        </div>
+      </div>
+      <div className='admin-stuff'>
+        {isOnline && isAdmin && <button onClick={() => navigate('/admin_panel')}>ADMIN PANEL</button>}
+        {isOnline && <button  onClick={() => navigate('/make_admin')}>MAKE ADMIN</button>}
       </div>
     </section>
   )

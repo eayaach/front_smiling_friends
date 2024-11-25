@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+import './Card.css'
 // Cambiar CardBox a un div
 const CardBox = styled.div`
   width: 85px;   // Size from the first script
@@ -10,6 +10,7 @@ const CardBox = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer; /* Asegura que el cursor cambie al pasar sobre la carta */
+
 `;
 
 function Card({ indice, imagen, onClick }) {
@@ -22,7 +23,7 @@ function Card({ indice, imagen, onClick }) {
   }, [imagen, indice]); // Corregimos dependencias para evitar referencias inválidas
 
   return (
-    <CardBox onClick={() => onClick(indice)}> {/* Manejar clic aquí */}
+    <CardBox onClick={() => onClick(indice)} className='glowing-wrapper'> {/* Manejar clic aquí */}
       <img
         src={currentImg}
         alt={`Carta ${currentIndice}`}

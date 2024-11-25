@@ -8,15 +8,19 @@ const ContenedorCartas = styled.div`
   display: flex;
   flex-direction: row;
   height: auto;
-  top: 62%;  // Combined top value from the first script
-  right: 0%; // Changed to match the second script
-  gap: 3%;   // Combined gap value
+  top: 75%;
+  right: -1%;
+  gap: 10px;
   padding: 2%;
   background-color: rgba(0, 0, 0, 0.5); // Translucent background
   border-radius: 10px;
   border: 2px solid #ffffff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
+  :hover {
+      color:  #00FFFF;
+      filter: drop-shadow(0 0 1em #00FFFF);
+    }
 `;
 
 function PlayerCards({ cartas = [], imagenes = {}, value, setter }) {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ContenedorMe = styled.div`
   position: fixed;
-  right: 0%;
+  right: -1%;
   top: 40%;
   display: flex;
   flex-direction: column;

@@ -104,12 +104,9 @@ export default function WaitingRoom() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <div className='section'>
       {error && <div className="error">{error}</div>}
-      <h1>Game of creator {gameData.nombre_creador}</h1>
-      <p><strong>Max Players:</strong> {gameData.max_players}</p>
-      <p><strong>Status:</strong> {gameData.estado}</p>
-      {parseInt(gameData.id_creador,10) === parseInt(userId,10)? (<button onClick={handleGamestart}>Start game</button>) :(<></>)}
+      <h1>Game of {gameData.nombre_creador}</h1>
       {gameData.jugadores.length > 0 ? (
         <div className="players-grid">
           {gameData.jugadores.map(player => (
@@ -124,6 +121,10 @@ export default function WaitingRoom() {
           ) : (
             <h2>No hay partidas disponibles</h2>
           )}
+      <div className='box more'>
+        <h2> {gameData.jugadores_actuales}/{gameData.max_players}</h2>
+        {parseInt(gameData.id_creador,10) === parseInt(userId,10)? (<button onClick={handleGamestart}>Start game</button>) :(<></>)}
+      </div>
     </div>
   );
 }

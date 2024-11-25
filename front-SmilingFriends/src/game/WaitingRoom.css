@@ -3,4 +3,17 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    justify-content: center;
+}
+
+.control-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0px;
+}
+
+.more{
+    width: 80%;
 }

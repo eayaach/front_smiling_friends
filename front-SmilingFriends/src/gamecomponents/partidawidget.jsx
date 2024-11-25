@@ -7,7 +7,7 @@ import { AuthContext } from '../contexts/auth/AuthContext';
 
 
 const CustomBackground = styled.div`
-  background-image: url(${props => props.game_image[0]});
+  background-image: url(${props => props.game_image});
   background-size: cover;
   background-position: center;
   &::before {
