@@ -7,7 +7,7 @@ const TableroContainer = styled.div`
   grid-template-columns: repeat(7, 1fr); /* 7 columnas */
   grid-template-rows: repeat(5, 1fr);   /* 5 filas */
   top: 8%;
-  left: 18%;
+  right: 32%;
   padding: 20px;
 `;
 
