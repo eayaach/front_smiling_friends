@@ -8,14 +8,12 @@ const ContenedorCartas = styled.div`
   display: flex;
   flex-direction: row;
   height: auto;
-  top: 62%;
-  left: 65%;
-  gap: 3%;
+  top: 75%;
+  right: 0%;
+  gap: 10px;
   padding: 2%;
-  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   border: 2px solid #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
 `;
 

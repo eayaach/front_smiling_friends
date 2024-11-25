@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 // Cambiar CardBox a un div
 const CardBox = styled.div`
-  width: 85px;
-  height: 110px;
+  width: 100px;
+  height: 135px;
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
