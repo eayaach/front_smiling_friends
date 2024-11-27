@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/auth/AuthContext';
+import '../common/index.css';
 import './AdminPanel.css';
 
 const AdminPanel = () => {
