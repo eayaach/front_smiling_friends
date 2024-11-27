@@ -43,6 +43,11 @@ function PartidaWidget({creador, actuales, max, id, game_image, game_id}) {
 
         navigate(`/waiting_room/${game_id}`);
       } catch(error){
+
+        if (error.status === 401){
+          alert(error.response.data.msg);
+          navigate(`/waiting_room/${game_id}`);
+        }
         console.log(error)
       }
     };

@@ -10,13 +10,14 @@ import Me from '../gamecomponents/Me';
 import styled from 'styled-components';
 import axios from 'axios';
 import MessageBox from './MessageBox';
+import { useNavigate } from 'react-router-dom';
 
 const Round = styled.div`
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-  border: 2px solid rgba(0, 255, 255, 0.8); 
-  border-radius: 15px; 
+  border: 2px solid rgba(0, 255, 255, 0.8);
+  border-radius: 15px;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
-              0 0 30px rgba(0, 255, 255, 0.3); 
+              0 0 30px rgba(0, 255, 255, 0.3);
   display: flex;
   padding: 10px;
   align-items: center;
@@ -24,7 +25,7 @@ const Round = styled.div`
   color: white;
   font-size: 0.8em;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.8),
-               0 0 10px rgba(0, 255, 255, 0.6); 
+               0 0 10px rgba(0, 255, 255, 0.6);
   animation: glow 1.5s infinite alternate;
   @keyframes glow {
   from {
@@ -49,6 +50,7 @@ function InGame() {
   const { socket } = useContext(SocketContext);
   const userId = sessionStorage.getItem("user_id");
   const [msg_jugada, SetMsgJugada] = useState([]);
+  const navigate = useNavigate();
 
   const Comunication_data = {
     id_saboteur: null,
@@ -87,12 +89,23 @@ function InGame() {
     if (!socket?.current) return;
 
     const handleUpdateGame = (response) => {
-      setIsLoading(true);
-      console.log(response);
-      setGameInfo(response);
-      SetMsgJugada(response.msg);
-      sessionStorage.setItem('Partida', JSON.stringify(response));
-      setIsLoading(false);
+      if (response.msg[0] === -3 || response.msg[0] === -4){
+        setIsLoading(true);
+        setGameInfo(response);
+        SetMsgJugada(response.msg);
+        sessionStorage.setItem('Partida', JSON.stringify(response));
+        setIsLoading(false);
+        alert(response.msg[1]);
+        // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
+        navigate('/');
+      } else {
+        setIsLoading(true);
+        console.log(response);
+        setGameInfo(response);
+        SetMsgJugada(response.msg);
+        sessionStorage.setItem('Partida', JSON.stringify(response));
+        setIsLoading(false);
+      }
     };
 
     socket.current?.on('InGamePartida', handleUpdateGame);
@@ -107,7 +120,7 @@ function InGame() {
       console.log("Selecciona una carta válida antes de jugar.");
       return;
     }
-  
+
     // Asignar los valores correctamente a Comunication_data
     Comunication_data.id_saboteur = parseInt(gameInfo.id_saboteur, 10); // Debería ser un número
     Comunication_data.jugador = parseInt(userId, 10); // El id del jugador actual
@@ -115,7 +128,7 @@ function InGame() {
     Comunication_data.objetivo = jugadorId; // El objetivo es el jugador seleccionado
     Comunication_data.accion = 1; // Acción de bloquear/desbloquear (o la acción correspondiente)
     Comunication_data.casilla = "vacio"; // Asegúrate de que `casilla` esté correctamente asignada si es necesario
-  
+
     console.log("Datos enviados al backend:", Comunication_data);
     if (parseInt(gameInfo.turno_actual, 10) === parseInt(userId, 10)) {
       try {
@@ -125,7 +138,7 @@ function InGame() {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         console.log("Respuesta del backend:", response.data);
-      
+
         // Verificar si la respuesta contiene un mensaje de éxito
         if (response.data.msg[0] === true) {
           setIsLoading(true);
@@ -135,14 +148,31 @@ function InGame() {
           setIsLoading(false);
           setSelectedCard(null);
         }
+        if (response.data.msg[0] === false){
+          setIsLoading(true);
+          SetMsgJugada(response.data.msg);
+          setIsLoading(false);
+          setSelectedCard(null);
+        }
+
+        if (response.data.msg[0] === -3 || response.data.msg[0] === -4){
+          setIsLoading(true);
+          setGameInfo(response.data);
+          SetMsgJugada(response.data.msg);
+          sessionStorage.setItem('Partida', JSON.stringify(response.data));
+          setIsLoading(false);
+          alert(response.data.msg[1]);
+          // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
+          navigate('/');
+        }
       } catch (err) {
         // Mostrar detalles del error
         console.error("Error al jugar carta:", err.response?.data || 'Error desconocido');
         setError(err.response?.data?.msg || 'Error al intentar jugar carta');
       }
-    }    
+    }
   };
-  
+
   const handleDiscardCard = async () => {
     if (!selectedCard) {
       console.log("No hay carta seleccionada para descartar.");
@@ -176,6 +206,23 @@ function InGame() {
           sessionStorage.setItem('Partida', JSON.stringify(response.data));
           setIsLoading(false);
           setSelectedCard(null); // Limpiar carta seleccionada después de descartarla
+        }
+        if (response.data.msg[0] === false){
+          setIsLoading(true);
+          SetMsgJugada(response.data.msg);
+          setIsLoading(false);
+          setSelectedCard(null);
+        }
+
+        if (response.data.msg[0] === -3 || response.data.msg[0] === -4){
+          setIsLoading(true);
+          setGameInfo(response.data);
+          SetMsgJugada(response.data.msg);
+          sessionStorage.setItem('Partida', JSON.stringify(response.data));
+          setIsLoading(false);
+          alert(response.data.msg[1]);
+          // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
+          navigate('/');
         }
       } catch (err) {
         console.error("Error al intentar descartar carta:", err.response?.data || 'Error desconocido');
@@ -217,6 +264,24 @@ function InGame() {
             sessionStorage.setItem('Partida', JSON.stringify(response.data));
             setIsLoading(false);
           }
+
+          if (response.data.msg[0] === false){
+            setIsLoading(true);
+            SetMsgJugada(response.data.msg);
+            setIsLoading(false);
+            setSelectedCard(null);
+          }
+
+          if (response.data.msg[0] === -3 || response.data.msg[0] === -4){
+            setIsLoading(true);
+            setGameInfo(response.data);
+            SetMsgJugada(response.data.msg);
+            sessionStorage.setItem('Partida', JSON.stringify(response.data));
+            setIsLoading(false);
+            alert(response.data.msg[1]);
+            // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
+            navigate('/');
+          }
         } catch (err) {
           console.log(err);
           setError(err.response?.data?.msg || 'Error al intentar jugar la carta');
@@ -229,21 +294,21 @@ function InGame() {
   return (
     <div className="section">
       {isLoading ? (
-        <div>Cargando datos...</div> 
+        <div>Cargando datos...</div>
       ) : (
         <>
           <Round>Turno Actual: {gameInfo.jugadores.find(jugador => jugador.id === gameInfo.turno_actual).usuario}</Round>
           <TableroWidget
             tablero={gameInfo.tablero}
             imagenes={cartas}
-            onCellClick={handleCellClick} 
+            onCellClick={handleCellClick}
           />
           <MessageBox msg={msg_jugada} mazo={gameInfo.cartas_restantes}></MessageBox>
           <PlayerCards
             value={selectedCard}
             cartas={gameInfo.cartas}
             imagenes={cartas}
-            setter={setSelectedCard} 
+            setter={setSelectedCard}
             OnDiscard={handleDiscardCard}
           />
           <Players jugadores={gameInfo.jugadores} imagenes={skins} userId={userId} onPlayerSelect={handlePlayerSelect} />
