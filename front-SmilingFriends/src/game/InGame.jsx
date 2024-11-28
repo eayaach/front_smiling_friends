@@ -85,6 +85,7 @@ function InGame() {
     fetchData();
   }, []);
 
+
   useEffect(() => {
     if (!socket?.current) return;
 
@@ -95,9 +96,10 @@ function InGame() {
         SetMsgJugada(response.msg);
         sessionStorage.setItem('Partida', JSON.stringify(response));
         setIsLoading(false);
-        alert(response.msg[1]);
-        // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
-        navigate('/');
+        setTimeout(() => {
+          sessionStorage.removeItem('Partida');
+          navigate('/profile'); // Ejecutar la navegación después del delay
+        }, 5000);
       } else {
         setIsLoading(true);
         console.log(response);
@@ -161,9 +163,11 @@ function InGame() {
           SetMsgJugada(response.data.msg);
           sessionStorage.setItem('Partida', JSON.stringify(response.data));
           setIsLoading(false);
-          alert(response.data.msg[1]);
-          // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
-          navigate('/');
+          
+          setTimeout(() => {
+            sessionStorage.removeItem('Partida');
+            navigate('/profile'); // Ejecutar la navegación después del delay
+          }, 5000); 
         }
       } catch (err) {
         // Mostrar detalles del error
@@ -220,9 +224,11 @@ function InGame() {
           SetMsgJugada(response.data.msg);
           sessionStorage.setItem('Partida', JSON.stringify(response.data));
           setIsLoading(false);
-          alert(response.data.msg[1]);
-          // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
-          navigate('/');
+
+          setTimeout(() => {
+            sessionStorage.removeItem('Partida');
+            navigate('/profile'); // Ejecutar la navegación después del delay
+          }, 5000); 
         }
       } catch (err) {
         console.error("Error al intentar descartar carta:", err.response?.data || 'Error desconocido');
@@ -278,9 +284,11 @@ function InGame() {
             SetMsgJugada(response.data.msg);
             sessionStorage.setItem('Partida', JSON.stringify(response.data));
             setIsLoading(false);
-            alert(response.data.msg[1]);
-            // este loco es el que jugo la ultima carta asi que debe gatillar la funcion de finalizar
-            navigate('/');
+          
+            setTimeout(() => {
+              sessionStorage.removeItem('Partida');
+            navigate('/profile'); // Ejecutar la navegación después del delay
+            }, 5000); 
           }
         } catch (err) {
           console.log(err);
@@ -312,7 +320,7 @@ function InGame() {
             OnDiscard={handleDiscardCard}
           />
           <Players jugadores={gameInfo.jugadores} imagenes={skins} userId={userId} onPlayerSelect={handlePlayerSelect} />
-          <Me jugadores={gameInfo.jugadores} imagenes={skins} userId={userId} is_evil={gameInfo.is_evil} />
+          <Me jugadores={gameInfo.jugadores} imagenes={skins} userId={userId} is_evil={gameInfo.is_evil} onPlayerSelect={handlePlayerSelect}/>
         </>
       )}
     </div>

@@ -56,9 +56,7 @@ export default function WaitingRoom() {
           }
         );
         setGameData(response.data); // Guardar los datos en el estado
-        console.log(response.data);
       } catch (err) {
-        console.log(err);
         setError(err.response?.data?.msg || "Error al cargar los datos");
       } finally {
         setLoading(false); // Terminar la carga
@@ -96,8 +94,6 @@ export default function WaitingRoom() {
       socket.current?.off('PartidaStarts', handleGameStart);
     };
   }, [socket.current]);
-
-
 
 
   if (loading) return <div>Cargando...</div>;

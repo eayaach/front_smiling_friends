@@ -56,26 +56,41 @@ const IconosWrapper = styled.div`
   }
 `;
 
+const Icono = styled.div`
+  svg {
+    color: ${(props) => (props.isBlocked ? 'red' : 'white')};
+  }
+`;
 
-function Me({ jugadores, imagenes, userId, is_evil}) {
+
+function Me({ jugadores, imagenes, userId, is_evil, onPlayerSelect}) {
   return (
       <ContenedorMe>
       {jugadores.map((jugador, index) => {
         const imageSrc = imagenes[jugador.id_skin];
         console.log(jugador.id);
         return (userId == jugador.id) && (
-          <Jugador key={index + 21177}>
+          <> 
+          <Jugador key={index} onClick={() => onPlayerSelect(jugador.id)}>
             <MiAvatar> <img src={imageSrc} /></MiAvatar>
             <NombreJugador>yo</NombreJugador>
             { is_evil && <Saboteur>Saboteur</Saboteur>}
           </Jugador>
+           <IconosWrapper>
+           <Icono isBlocked={jugador.bloqueo[0] == 1}>
+             <GiOldLantern />
+           </Icono>
+           <Icono isBlocked={jugador.bloqueo[1] == 1}>
+             <GiMineWagon />
+           </Icono>
+           <Icono isBlocked={jugador.bloqueo[2] == 1}>
+             <GiWarPick />
+           </Icono>
+         </IconosWrapper>
+         </>
+          
         );
       })}
-      <IconosWrapper>
-        <GiOldLantern />
-        <GiMineWagon />
-        <GiWarPick/>
-      </IconosWrapper>
       </ContenedorMe>
   );
 }

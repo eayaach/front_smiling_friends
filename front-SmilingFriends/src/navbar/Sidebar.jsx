@@ -135,15 +135,6 @@ export default function Sidebar() {
             </NavElement>
           </Link>
 
-          <Link to="./login" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <NavElement>
-              <NavIcon>
-                <IoIcons.IoIosStats />
-              </NavIcon>
-              <StyledParagraph>BOARD</StyledParagraph>
-            </NavElement>
-          </Link>
-
           <Link to="./instructions" style={{ textDecoration: 'none', color: 'inherit' }}>
             <NavElement>
               <NavIcon>
