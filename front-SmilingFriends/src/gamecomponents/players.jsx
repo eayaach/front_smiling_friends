@@ -72,7 +72,7 @@ function Players({ jugadores, imagenes, userId, onPlayerSelect }) {
         const imageSrc = imagenes[jugador.id_skin];
         const bloqueo = jugador.bloqueo || []; // Asegúrate de que `bloqueo` sea un array.
 
-        return userId !== jugador.id && (
+        return (userId != jugador.id) && (
           <Jugador key={index} onClick={() => onPlayerSelect(jugador.id)}>
             <JugadorWrapper>
               <Avatar>

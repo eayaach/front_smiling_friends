@@ -9,14 +9,31 @@ function App() {
   const navigate = useNavigate();
   const { isAdmin, isOnline } = useContext(AuthContext);
 
+  const handleStartClick = () => {
+    if (!isOnline) {
+      navigate('/login'); // Redirige al login si no está online
+    } else {
+      navigate('/create_games'); // Redirige a la página de crear juegos si está online
+    }
+  };
+
+  const handleJoinClick = () => {
+    if (!isOnline) {
+      navigate('/login'); // Redirige al login si no está online
+    } else {
+      navigate('/available_games'); // Redirige a la página de juegos disponibles si está online
+    }
+  };
+
   return (
     <section className='main'>
       <div className="neon-text">Saboteur</div>
       <div className='button-container'>
-        <div>
-        <button className="startButtons" onClick={() => navigate('/create_games')}>START</button>
-        <button className="startButtons" onClick={() => navigate('/available_games')}>JOIN</button>
-        </div>
+        {(sessionStorage.getItem("Partida")) && <button  className="startButtons" onClick={() => navigate('/ingame')}>Partida</button>}
+        {!(sessionStorage.getItem("Partida")) && <div>
+        <button className="startButtons" onClick={handleStartClick}>START</button>
+        <button className="startButtons" onClick={handleJoinClick}>JOIN</button>
+        </div>}
       </div>
       <div className='admin-stuff'>
         {isOnline && isAdmin && <button onClick={() => navigate('/admin_panel')}>ADMIN PANEL</button>}
