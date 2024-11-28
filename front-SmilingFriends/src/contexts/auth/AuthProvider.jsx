@@ -23,6 +23,7 @@ function AuthProvider({ children }) {
         sessionStorage.removeItem('game_id');
         sessionStorage.removeItem('is_admin');
         sessionStorage.removeItem('game_status');
+        sessionStorage.clear();
     }
 
     useEffect(() => {
